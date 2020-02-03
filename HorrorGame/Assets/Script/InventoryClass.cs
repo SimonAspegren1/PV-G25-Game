@@ -2,19 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IventoryObjects : ScriptableObject
+public class InventoryClass : MonoBehaviour
 {
-    public List<ItemClass> Container = new List<ItemClass>();
-
-    [System.Serializable]
-
-    public class InventorySlot
+    // Start is called before the first frame update
+    void Start()
     {
-        public ItemClass item;
-        public int amount;
-
-
+        
     }
 
-
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
 }
