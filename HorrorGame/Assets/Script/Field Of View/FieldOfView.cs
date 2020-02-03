@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class FieldOfView : MonoBehaviour
 { 
+    public Vector3 getVectorFromAngle(float anAngle)
+    {
+        float tempAngleRad = anAngle * (Mathf.PI / 180f);
+        return new Vector3(Mathf.Cos(tempAngleRad), Mathf.Sin(tempAngleRad));
+    }
+
     private void Start()
     {
         Mesh myMesh = new Mesh();
@@ -14,7 +20,7 @@ public class FieldOfView : MonoBehaviour
         int myRayCount = 2;
         float myAngle = 0f;
         float myAngleIncrease = myFov / myRayCount;
-        float viewDistance = 50f;
+        float myViewDistance = 50f;
 
         Vector3[] myVertices = new Vector3[myRayCount + 1 + 1];
         Vector2[] myUv = new Vector2[myVertices.Length];
@@ -24,7 +30,7 @@ public class FieldOfView : MonoBehaviour
 
         for (int i = 0; i <= myRayCount; i++)
         {
-
+            Vector3 tempVertex = myOrigin + getVectorFromAngle(myAngle) * myViewDistance;
         }
 
         myTriangles[0] = 0;
