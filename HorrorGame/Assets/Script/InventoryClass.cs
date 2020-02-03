@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IventoryObjects : ScriptableObject
+public class InventoryClass : ScriptableObject
 {
     public List<ItemClass> Container = new List<ItemClass>();
 
