@@ -14,22 +14,26 @@ public class Note : ItemClass
     {
         ItemName = Name;
         ItemDescription = Description;
-        //ExitButton.onClick.AddListener()
+        ExitButton.onClick.AddListener(ExitNote);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public override void UseItem()
     {
         NoteText.gameObject.SetActive(true);
+        ExitButton.gameObject.SetActive(true);
     }
 
     void ExitNote()
     {
-
+        NoteText.gameObject.SetActive(false);
+        ExitButton.gameObject.SetActive(false);
     }
 }
+
+
