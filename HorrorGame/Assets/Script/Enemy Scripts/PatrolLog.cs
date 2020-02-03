@@ -8,7 +8,7 @@ public class PatrolLog : Log
     public int currentPoint;
     public Transform currentGoal;
     public float roundingDistance;
-
+    public bool myValue = false;
 
     public override void CheckDistance()
     {
@@ -37,17 +37,28 @@ public class PatrolLog : Log
             {
                 ChangeGoal();
             }
-            
+
         }
 
     }
     public void ChangeGoal()
     {
-        if (currentPoint == path.Length -1)
+        if (currentPoint == 0)
         {
-            currentPoint = 0;
-            currentGoal = path[0];
+            myValue = false;
         }
+        if (currentPoint == path.Length - 1)
+        {
+            myValue = true;
+            currentPoint -= 1;
+            currentGoal = path[currentPoint];
+        }
+        else if (myValue == true)
+        {
+            currentPoint -= 1;
+            currentGoal = path[currentPoint];
+        }
+
         else
         {
             currentPoint++;
