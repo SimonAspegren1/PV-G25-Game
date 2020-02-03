@@ -4,10 +4,26 @@ using UnityEngine;
 
 public class InventoryClass : ScriptableObject
 {
-    public List<ItemClass> Container = new List<ItemClass>();
+    public List<InventorySlot> Container = new List<InventorySlot>();
+    public void AddItem(ItemClass _myItem, int _myAmount)
+    {
+        bool tempHasItem = false;
+        for (int i = 0; i < Container.Count; i++)
+        {
+            if(Container[i].myItem == _myItem)
+            {
+                Container[i].AddAmount(_myAmount);
+                tempHasItem = true;
+                break;
+            }
+        }
+        if (!tempHasItem)
+        {
+            Container.Add(new InventorySlot(_myItem, _myAmount));
+        }
+    }
 
     [System.Serializable]
-
     public class InventorySlot
     {
         public ItemClass myItem;
@@ -19,10 +35,11 @@ public class InventoryClass : ScriptableObject
         }
         public void AddAmount(int Value)
         {
-
+            myAmount += Value;
         }
 
     }
+    
 
 
 }
