@@ -10,9 +10,17 @@ public class IventoryObjects : ScriptableObject
 
     public class InventorySlot
     {
-        public ItemClass item;
-        public int amount;
+        public ItemClass myItem;
+        public int myAmount;
+        public InventorySlot(ItemClass _myItem, int _myAmount)
+        {
+            myItem = _myItem;
+            myAmount = _myAmount;
+        }
+        public void AddAmount(int Value)
+        {
 
+        }
 
     }
 
