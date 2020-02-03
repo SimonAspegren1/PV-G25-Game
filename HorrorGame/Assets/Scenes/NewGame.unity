@@ -67008,6 +67008,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8566475092225840097, guid: 6526d06773cfe7749923cd962a504c3d,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 6384995853225704635, guid: de72031ef58054b4dad22731e8d81f47,
+        type: 3}
     - target: {fileID: 8566475092225840098, guid: 6526d06773cfe7749923cd962a504c3d,
         type: 3}
       propertyPath: m_LocalPosition.x
