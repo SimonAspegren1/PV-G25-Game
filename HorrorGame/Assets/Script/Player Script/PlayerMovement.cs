@@ -61,13 +61,9 @@ public class PlayerMovement : MonoBehaviour
     {
         anim.SetBool("attacking", true);
         currentState = PlayerState.attack;
-
         yield return null;
-        
-        
-        yield return new WaitForSeconds(.5f);
         anim.SetBool("attacking", false);
-
+        yield return new WaitForSeconds(.3f);
         if (currentState != PlayerState.interact)
         {
             currentState = PlayerState.walk;
