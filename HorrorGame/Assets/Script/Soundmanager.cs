@@ -2,38 +2,42 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Soundmanager : MonoBehaviour
-{
-    public static Audioclip
-    static Audiosource audioSrce; 
+//public class Soundmanager : MonoBehaviour
+//{
 
-    void start() {
+    //public static Audioclip
+    //static AudioSource audioSrce; 
 
-        ButtonSound =
-        BackgroundMusic =
-        ChaseMusic =
-        Enemyfootsteps =
-        Plyerfootsteps =
-        Ambience =
+    //void start() {
 
-
-        audiosrce = GetComponent<audiosource> (); 
-}
-
-    void Update() {
-
-}   
-    public static void Playsound (string clip)
-    {
-         switch (Clip) { 
-         case " violin ":
-         audioSrce.PlayOneShot(violin);
-         break; 
-         
+//        ButtonSound =
+//        BackgroundMusic = 
+//        ChaseMusic =  
+//        Enemyfootsteps =
+//        Plyerfootsteps =
+//        Ambience =
 
 
+//        audiosrce = GetComponent<audiosource> (); 
+//}
 
-    }
+//    void Update() {
+
+//}   
+//    public static void Playsound (string clip)
+//    {
+//        switch (Clip) {
+//            case " violin ":
+//                audioSrce.PlayOneShot(violin);
+//                break;
+//            case " violin ":
+//                audioSrce.PlayOneShot(violin);
+//                break;
+//            case " violin ":
+//                audioSrce.PlayOneShot(violin);
+//                break;
+
+//        }
 
 
  
