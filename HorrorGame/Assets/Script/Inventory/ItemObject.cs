@@ -7,10 +7,10 @@ public enum ItemType
     Food,
     Medkit
 }
-public class ItemObject : MonoBehaviour
+public abstract class ItemObject : ScriptableObject
 {
     public GameObject prefab;
-    public ItemType Type;
+    public ItemType type;
     [TextArea(15, 20)]
     public string description;
 }

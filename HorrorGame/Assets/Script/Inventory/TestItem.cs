@@ -19,9 +19,9 @@ public class TestItem : ItemClass
     }
 
     // Update is called once per frame
-    void Update()
+    public void Awake (
     {
-
+        type = ItemType.Medkit;
     }
 
     public override void UseItem()
