@@ -32,10 +32,10 @@ public class Knockback : MonoBehaviour
                 }
                 if (collision.gameObject.CompareTag("Player"))
                 {
-                    if (collision.GetComponent<PlayerMovement>().currentState != PlayerState.stagger)
+                    if (collision.GetComponent<Player>().currentState != PlayerState.stagger)
                     {
-                        hit.GetComponent<PlayerMovement>().currentState = PlayerState.stagger;
-                        collision.GetComponent<PlayerMovement>().Knock(knockTime, damage);
+                        hit.GetComponent<Player>().currentState = PlayerState.stagger;
+                        collision.GetComponent<Player>().Knock(knockTime, damage);
                     }
                     
                 }

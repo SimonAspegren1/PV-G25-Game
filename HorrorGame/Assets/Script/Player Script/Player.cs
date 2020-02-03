@@ -7,7 +7,7 @@ public enum PlayerState
     walk, attack, interact, stagger, idle
 }
 
-public class PlayerMovement : MonoBehaviour
+public class Player : MonoBehaviour
 {
     public PlayerState currentState;
     public float speed;
@@ -94,7 +94,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (change != Vector3.zero)
         {
-            MovePlayer();
+            MovePlayer((float)Time.deltaTime);
             anim.SetFloat("moveX", change.x);
             anim.SetFloat("moveY", change.y);
             anim.SetBool("moving", true);
@@ -104,10 +104,10 @@ public class PlayerMovement : MonoBehaviour
             anim.SetBool("moving", false);
         }
     }
-    void MovePlayer()
+    void MovePlayer(float aDeltaTime)
     {
         change.Normalize();
-        myRigidbody.MovePosition(transform.position + change * speed * Time.deltaTime);
+        myRigidbody.MovePosition(transform.position + change * speed * aDeltaTime);
     }
 
     public void Knock(float knockTime, float damage)

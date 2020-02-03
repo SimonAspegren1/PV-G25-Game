@@ -6,15 +6,15 @@ public class HpUp : ItemClass
 {
     [SerializeField] string Name, Description;
     [SerializeField] float AmountToRestore;
-    PlayerMovement PM;
+    Player Player;
     FloatValue PlayerHpFloatValue;
     // Start is called before the first frame update
     void Start()
     {
-        PM = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+        Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         ItemName = Name;
         ItemDescription = Description;
-        PlayerHpFloatValue = PM.currentHealth;
+        PlayerHpFloatValue = Player.currentHealth;
         PlayerHpFloatValue.RuntimeValue -= 3;
     }
 
