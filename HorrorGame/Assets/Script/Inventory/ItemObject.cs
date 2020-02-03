@@ -10,5 +10,7 @@ public enum ItemType
 public class ItemObject : MonoBehaviour
 {
     public GameObject prefab;
-
+    public ItemType Type;
+    [TextArea(15, 20)]
+    public string description;
 }
