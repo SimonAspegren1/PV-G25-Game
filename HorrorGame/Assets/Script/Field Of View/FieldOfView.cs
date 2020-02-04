@@ -22,7 +22,7 @@ public class FieldOfView : MonoBehaviour
     {
         float myFov = 90f;
         Vector3 myOrigin = Vector3.zero;
-        int myRayCount = 3;
+        int myRayCount = 50;
         float myAngle = 0f;
         float myAngleIncrease = myFov / myRayCount;
         float myViewDistance = 8f;
@@ -39,7 +39,7 @@ public class FieldOfView : MonoBehaviour
         {
             Vector3 tempVertex;
 
-            RaycastHit2D raycastHit2D = Physics2D.Raycast(myOrigin, getVectorFromAngle(myAngle), myViewDistance, myLayerMask);
+            RaycastHit2D raycastHit2D = Physics2D.Raycast(getVectorFromAngle(myAngle), myOrigin, myViewDistance, myLayerMask);
             //Debug.Log(raycastHit2D.point);
 
             if (raycastHit2D.collider == null)
