@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerItemInventory : MonoBehaviour
+public class hfgd : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
