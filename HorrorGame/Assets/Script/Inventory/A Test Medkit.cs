@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Default Object", menuName = "Inventory System/Items/Deafult")]
-public class DefaultObjective : ItemObject
+public class ATestMedkit : ItemObject
 {
+
+
+
+
     public void Awake()
     {
         type = ItemType.Default;

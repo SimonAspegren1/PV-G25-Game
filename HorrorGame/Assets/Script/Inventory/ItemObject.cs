@@ -5,7 +5,8 @@ using UnityEngine;
 public enum ItemType
 {
     Food,
-    Medkit
+    Medkit,
+    Default
 }
 public abstract class ItemObject : ScriptableObject
 {
