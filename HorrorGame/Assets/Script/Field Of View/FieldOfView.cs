@@ -20,9 +20,9 @@ public class FieldOfView : MonoBehaviour
 
     private void Update()
     {
-    float myFov = 90f;
+        float myFov = 90f;
         Vector3 myOrigin = Vector3.zero;
-        int myRayCount = 2;
+        int myRayCount = 50;
         float myAngle = 0f;
         float myAngleIncrease = myFov / myRayCount;
         float myViewDistance = 8f;
@@ -38,21 +38,18 @@ public class FieldOfView : MonoBehaviour
         for (int i = 0; i <= myRayCount; i++)
         {
             Vector3 tempVertex;
-            RaycastHit2D tempRaycastHit = Physics2D.Raycast(myOrigin, getVectorFromAngle(myAngle), myViewDistance);
-            
 
-            if (tempRaycastHit.collider != null)
+            RaycastHit2D raycastHit2D = Physics2D.Raycast(myOrigin, getVectorFromAngle(myAngle), myViewDistance);
+
+            if (raycastHit2D.collider == null)
             {
-                // Did not hit an object
-                tempVertex = tempRaycastHit.point;
+                tempVertex = myOrigin + getVectorFromAngle(myAngle) * myViewDistance;
             }
             else
             {
-                Debug.Log("Hit no object");
-                // Did hit an object
-                tempVertex = myOrigin + getVectorFromAngle(myAngle) * myViewDistance;
+                tempVertex = raycastHit2D.point;
             }
-            Debug.Log(tempRaycastHit);
+
             myVertices[tempVertexIndex] = tempVertex;
 
             if (i > 0)
@@ -67,10 +64,6 @@ public class FieldOfView : MonoBehaviour
             tempVertexIndex++;
             myAngle -= myAngleIncrease;
         }
-
-        myTriangles[0] = 0;
-        myTriangles[1] = 1;
-        myTriangles[2] = 2;
 
         myMesh.vertices = myVertices;
         myMesh.uv = myUv;
