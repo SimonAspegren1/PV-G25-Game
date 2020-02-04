@@ -7,7 +7,9 @@ public class Energy : MonoBehaviour
 {
     Player ThePlayer;
     bool HasEnergyKick = false;
+    bool IsResistingDMG = false;
     float CurrentTime;
+    float CurrentTime2;
     float OriginalPlayerSpeed;
     [SerializeField] RectTransform EnergyBar;
     [SerializeField] float MaxSpeed;
@@ -52,16 +54,23 @@ public class Energy : MonoBehaviour
 
             if (ThePlayer.speed > MaxSpeed)
             {
-                ThePlayer.currentHealth.RuntimeValue = 0;
+                ThePlayer.Knock(0, 1000);
+            }
+        }
+
+        if (IsResistingDMG)
+        {
+            CurrentTime2 -= Time.deltaTime;
+            if(CurrentTime2 <= 0)
+            {
+                CurrentTime2 = 0;
+                IsResistingDMG = false;
+                ThePlayer.SetIsResistingDMG(false, 0);
             }
         }
 
 
         EnergyBar.sizeDelta = new Vector2(CurrentTime * 100, EnergyBar.sizeDelta.y);
-        if(ThePlayer.currentHealth.RuntimeValue <= 0)
-        {
-            EnergyBar.sizeDelta = new Vector2();
-        }
     }
 
     public void StartEnergyKick(float aTimeToReach, float aSpeedIncrease)
@@ -73,5 +82,15 @@ public class Energy : MonoBehaviour
         CurrentTime += aTimeToReach;
         HasEnergyKick = true;
         ThePlayer.speed += aSpeedIncrease;
+    }
+    public void DamageResTimerStart(float duration, float DMGRes)
+    {
+        if(CurrentTime2 < 0)
+        {
+            CurrentTime2 = 0;
+        }
+        CurrentTime2 += duration;
+        IsResistingDMG = true;
+        ThePlayer.SetIsResistingDMG(true, DMGRes);
     }
 }
