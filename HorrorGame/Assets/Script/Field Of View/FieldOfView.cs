@@ -20,7 +20,7 @@ public class FieldOfView : MonoBehaviour
         int myRayCount = 2;
         float myAngle = 0f;
         float myAngleIncrease = myFov / myRayCount;
-        float myViewDistance = 50f;
+        float myViewDistance = 4f;
 
         Vector3[] myVertices = new Vector3[myRayCount + 1 + 1];
         Vector2[] myUv = new Vector2[myVertices.Length];
@@ -28,9 +28,24 @@ public class FieldOfView : MonoBehaviour
 
         myVertices[0] = myOrigin;
 
+        int tempVertexIndex = 1;
+        int tempTriangelIndex = 0;
         for (int i = 0; i <= myRayCount; i++)
         {
             Vector3 tempVertex = myOrigin + getVectorFromAngle(myAngle) * myViewDistance;
+            myVertices[tempVertexIndex] = tempVertex;
+
+            if (i > 0)
+            {
+                myTriangles[tempTriangelIndex + 0] = 0;
+                myTriangles[tempTriangelIndex + 1] = tempVertexIndex - 1;
+                myTriangles[tempTriangelIndex + 2] = tempVertexIndex;
+
+                tempTriangelIndex += 3;
+            }
+
+            tempVertexIndex++;
+            myAngle -= myAngleIncrease;
         }
 
         myTriangles[0] = 0;
