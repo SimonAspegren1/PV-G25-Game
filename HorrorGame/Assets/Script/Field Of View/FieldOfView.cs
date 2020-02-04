@@ -9,7 +9,7 @@ public class FieldOfView : MonoBehaviour
         float tempAngleRad = anAngle * (Mathf.PI / 180f);
         return new Vector3(Mathf.Cos(tempAngleRad), Mathf.Sin(tempAngleRad));
     }
-
+    [SerializeField] private LayerMask myLayerMask;
     private Mesh myMesh;
 
     private void Start()
@@ -22,7 +22,7 @@ public class FieldOfView : MonoBehaviour
     {
         float myFov = 90f;
         Vector3 myOrigin = Vector3.zero;
-        int myRayCount = 50;
+        int myRayCount = 3;
         float myAngle = 0f;
         float myAngleIncrease = myFov / myRayCount;
         float myViewDistance = 8f;
@@ -39,16 +39,20 @@ public class FieldOfView : MonoBehaviour
         {
             Vector3 tempVertex;
 
-            RaycastHit2D raycastHit2D = Physics2D.Raycast(myOrigin, getVectorFromAngle(myAngle), myViewDistance);
+            RaycastHit2D raycastHit2D = Physics2D.Raycast(myOrigin, getVectorFromAngle(myAngle), myViewDistance, myLayerMask);
+            //Debug.Log(raycastHit2D.point);
 
             if (raycastHit2D.collider == null)
             {
+                Debug.Log("didnt hit anything");
                 tempVertex = myOrigin + getVectorFromAngle(myAngle) * myViewDistance;
             }
             else
             {
+                Debug.Log("hit something");
                 tempVertex = raycastHit2D.point;
             }
+            Debug.Log(raycastHit2D.point);
 
             myVertices[tempVertexIndex] = tempVertex;
 
