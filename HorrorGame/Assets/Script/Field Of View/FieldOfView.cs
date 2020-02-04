@@ -6,7 +6,7 @@ public class FieldOfView : MonoBehaviour
 {
 
     float myFov = 90f;
-    Vector3 myOrigin = Vector3.zero;
+    Vector3 myOrigin;
     int myRayCount = 50;
     float myAngle = 0f;
     float myAngleIncrease;
@@ -16,15 +16,16 @@ public class FieldOfView : MonoBehaviour
     Vector2[] myUv;
     int[] myTriangles;
 
+    [SerializeField] private LayerMask myLayerMask;
+
+    private Mesh myMesh;
+
     public Vector3 getVectorFromAngle(float anAngle)
     {
         float tempAngleRad = anAngle * (Mathf.PI / 180f);
         return new Vector3(Mathf.Cos(tempAngleRad), Mathf.Sin(tempAngleRad));
-
-        
     }
-    [SerializeField] private LayerMask myLayerMask;
-    private Mesh myMesh;
+   
 
     public void Start()
     {
@@ -35,14 +36,12 @@ public class FieldOfView : MonoBehaviour
         myVertices = new Vector3[myRayCount + 1 + 1];
         myUv = new Vector2[myVertices.Length];
         myTriangles = new int[myRayCount * 3];
+
+        myOrigin = Vector3.zero;
     }
 
     private void Update()
     {
-       
-
-        
-
         myVertices[0] = myOrigin;
 
         int tempVertexIndex = 1;
@@ -56,14 +55,13 @@ public class FieldOfView : MonoBehaviour
 
             if (raycastHit2D.collider == null)
             {
-                Debug.Log("didnt hit anything");
-                tempVertex = myOrigin + getVectorFromAngle(myAngle) * myViewDistance;
+                tempVertex = transform.position + getVectorFromAngle(myAngle) * myViewDistance;
             }
             else
             {
-                Debug.Log("hit something");
                 tempVertex = raycastHit2D.point;
             }
+            Debug.Log(tempVertex);
             Debug.Log(raycastHit2D.point);
 
             myVertices[tempVertexIndex] = tempVertex;
