@@ -674,9 +674,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1201034231}
-  - component: {fileID: 1201034234}
   - component: {fileID: 1201034233}
   - component: {fileID: 1201034232}
+  - component: {fileID: 1201034234}
   m_Layer: 0
   m_Name: FieldOfView
   m_TagString: Untagged
@@ -692,7 +692,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1201034230}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 31.157455, y: -16.06444, z: -25.2375}
+  m_LocalPosition: {x: 31.157455, y: -16.06444, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -753,10 +753,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1201034230}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7219c6131e5089142977a510b18adbc4, type: 3}
+  m_Script: {fileID: 11500000, guid: dc3d06adc92e40b46a887fc836d1b9c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myAngle: 0
 --- !u!1001 &1367262520
 PrefabInstance:
   m_ObjectHideFlags: 0
