@@ -19,6 +19,8 @@ public class Player : MonoBehaviour
     public VectorValue startingPos;
     public Inventory playerInventory;
     public SpriteRenderer receivedItemSprite;
+    [SerializeField] bool IsResistingDMG = false;
+    [SerializeField] float DamageRes;
 
     // Start is called before the first frame update
     void Start()
@@ -112,6 +114,10 @@ public class Player : MonoBehaviour
 
     public void Knock(float knockTime, float damage)
     {
+        if (IsResistingDMG)
+        {
+            damage *= DamageRes;
+        }
         currentHealth.RuntimeValue -= damage;
         PlayerHealthSignal.Raise();
         if (currentHealth.RuntimeValue > 0)
@@ -134,5 +140,11 @@ public class Player : MonoBehaviour
             currentState = PlayerState.idle;
             myRigidbody.velocity = Vector2.zero;
         }
+    }
+
+    public void SetIsResistingDMG(bool aIsResistingDMG, float SomeDamageRes)
+    {
+        IsResistingDMG = aIsResistingDMG;
+        DamageRes = SomeDamageRes;
     }
 }
