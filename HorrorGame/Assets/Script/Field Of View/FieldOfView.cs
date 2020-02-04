@@ -3,33 +3,45 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FieldOfView : MonoBehaviour
-{ 
+{
+
+    float myFov = 90f;
+    Vector3 myOrigin = Vector3.zero;
+    int myRayCount = 50;
+    float myAngle = 0f;
+    float myAngleIncrease;
+    float myViewDistance = 8f;
+
+    Vector3[] myVertices;
+    Vector2[] myUv;
+    int[] myTriangles;
+
     public Vector3 getVectorFromAngle(float anAngle)
     {
         float tempAngleRad = anAngle * (Mathf.PI / 180f);
         return new Vector3(Mathf.Cos(tempAngleRad), Mathf.Sin(tempAngleRad));
+
+        
     }
     [SerializeField] private LayerMask myLayerMask;
     private Mesh myMesh;
 
-    private void Start()
+    public void Start()
     {
         myMesh = new Mesh();
         GetComponent<MeshFilter>().mesh = myMesh;
+        myAngleIncrease = myFov / myRayCount;
+
+        myVertices = new Vector3[myRayCount + 1 + 1];
+        myUv = new Vector2[myVertices.Length];
+        myTriangles = new int[myRayCount * 3];
     }
 
     private void Update()
     {
-        float myFov = 90f;
-        Vector3 myOrigin = Vector3.zero;
-        int myRayCount = 50;
-        float myAngle = 0f;
-        float myAngleIncrease = myFov / myRayCount;
-        float myViewDistance = 8f;
+       
 
-        Vector3[] myVertices = new Vector3[myRayCount + 1 + 1];
-        Vector2[] myUv = new Vector2[myVertices.Length];
-        int[] myTriangles = new int[myRayCount * 3];
+        
 
         myVertices[0] = myOrigin;
 
@@ -39,7 +51,7 @@ public class FieldOfView : MonoBehaviour
         {
             Vector3 tempVertex;
 
-            RaycastHit2D raycastHit2D = Physics2D.Raycast(myOrigin, getVectorFromAngle(myAngle), myViewDistance, myLayerMask);
+            RaycastHit2D raycastHit2D = Physics2D.Raycast(transform.position, getVectorFromAngle(myAngle), myViewDistance, myLayerMask);
             //Debug.Log(raycastHit2D.point);
 
             if (raycastHit2D.collider == null)
