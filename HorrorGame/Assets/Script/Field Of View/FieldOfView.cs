@@ -39,7 +39,7 @@ public class FieldOfView : MonoBehaviour
         {
             Vector3 tempVertex;
 
-            RaycastHit2D raycastHit2D = Physics2D.Raycast(getVectorFromAngle(myAngle), myOrigin, myViewDistance, myLayerMask);
+            RaycastHit2D raycastHit2D = Physics2D.Raycast(myOrigin, getVectorFromAngle(myAngle), myViewDistance, myLayerMask);
             //Debug.Log(raycastHit2D.point);
 
             if (raycastHit2D.collider == null)
