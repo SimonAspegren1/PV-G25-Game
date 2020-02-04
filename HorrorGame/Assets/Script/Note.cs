@@ -7,6 +7,7 @@ public class Note : ItemClass
 {
     [SerializeField] Text NoteText;
     [SerializeField] Button ExitButton;
+    [SerializeField] GameObject ScrollArea;
     [SerializeField] string Name;
     [SerializeField] string Description = "Note to read from";
     // Start is called before the first frame update
@@ -25,13 +26,15 @@ public class Note : ItemClass
 
     public override void UseItem()
     {
-        NoteText.gameObject.SetActive(true);
+        ScrollArea.SetActive(true);
         ExitButton.gameObject.SetActive(true);
+        NoteText.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(NoteText.gameObject.GetComponent<RectTransform>().sizeDelta.x
+            ,NoteText.preferredHeight);
     }
 
     void ExitNote()
     {
-        NoteText.gameObject.SetActive(false);
+        ScrollArea.SetActive(false);
         ExitButton.gameObject.SetActive(false);
     }
 }
