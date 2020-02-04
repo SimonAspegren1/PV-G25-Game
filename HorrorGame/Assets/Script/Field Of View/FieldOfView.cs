@@ -10,17 +10,22 @@ public class FieldOfView : MonoBehaviour
         return new Vector3(Mathf.Cos(tempAngleRad), Mathf.Sin(tempAngleRad));
     }
 
+    private Mesh myMesh;
+
     private void Start()
     {
-        Mesh myMesh = new Mesh();
+        myMesh = new Mesh();
         GetComponent<MeshFilter>().mesh = myMesh;
+    }
 
-        float myFov = 90f;
+    private void Update()
+    {
+    float myFov = 90f;
         Vector3 myOrigin = Vector3.zero;
         int myRayCount = 2;
         float myAngle = 0f;
         float myAngleIncrease = myFov / myRayCount;
-        float myViewDistance = 4f;
+        float myViewDistance = 8f;
 
         Vector3[] myVertices = new Vector3[myRayCount + 1 + 1];
         Vector2[] myUv = new Vector2[myVertices.Length];
@@ -32,7 +37,22 @@ public class FieldOfView : MonoBehaviour
         int tempTriangelIndex = 0;
         for (int i = 0; i <= myRayCount; i++)
         {
-            Vector3 tempVertex = myOrigin + getVectorFromAngle(myAngle) * myViewDistance;
+            Vector3 tempVertex;
+            RaycastHit2D tempRaycastHit = Physics2D.Raycast(myOrigin, getVectorFromAngle(myAngle), myViewDistance);
+            
+
+            if (tempRaycastHit.collider != null)
+            {
+                // Did not hit an object
+                tempVertex = tempRaycastHit.point;
+            }
+            else
+            {
+                Debug.Log("Hit no object");
+                // Did hit an object
+                tempVertex = myOrigin + getVectorFromAngle(myAngle) * myViewDistance;
+            }
+            Debug.Log(tempRaycastHit);
             myVertices[tempVertexIndex] = tempVertex;
 
             if (i > 0)
