@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 [CreateAssetMenu(fileName = "New Inventory", menuName = "Inventory System/Inventory")]
-public class InventoryObject : ScriptableObject
+public class InventoryClass : ScriptableObject
 {
     public List<InventorySlot> Container = new List<InventorySlot>();
-    public void AddItem(ItemObject _myItem, int _myAmount)
+    public void AddItem(ItemClass _myItem, int _myAmount)
     {
         bool tempHasItem = false;
         for (int i = 0; i < Container.Count; i++)
@@ -26,9 +26,9 @@ public class InventoryObject : ScriptableObject
     [System.Serializable]
     public class InventorySlot
     {
-        public ItemObject myItem;
+        public ItemClass myItem;
         public int myAmount;
-        public InventorySlot(ItemObject _myItem, int _myAmount)
+        public InventorySlot(ItemClass _myItem, int _myAmount)
         {
             myItem = _myItem;
             myAmount = _myAmount;
