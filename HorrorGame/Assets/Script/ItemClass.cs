@@ -7,6 +7,7 @@ public abstract class ItemClass : MonoBehaviour
     protected string ItemName;
     protected string ItemDescription;
     public GameObject prefab;
+    public bool Stackable;
     // Start is called before the first frame update
     void Start()
     {
