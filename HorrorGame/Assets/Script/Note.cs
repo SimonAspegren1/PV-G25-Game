@@ -10,13 +10,11 @@ public class Note : ItemClass
     [SerializeField] GameObject ScrollArea;
     [SerializeField] string Name;
     [SerializeField] string Description = "Note to read from";
-    [SerializeField] GameObject Theprefab;
     // Start is called before the first frame update
     void Start()
     {
         ItemName = Name;
         ItemDescription = Description;
-        prefab = Theprefab;
         ExitButton.onClick.AddListener(ExitNote);
     }
 
