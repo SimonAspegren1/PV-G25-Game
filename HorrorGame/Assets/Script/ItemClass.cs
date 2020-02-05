@@ -6,6 +6,7 @@ public abstract class ItemClass : MonoBehaviour
 {
     protected string ItemName;
     protected string ItemDescription;
+    public GameObject prefab;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,4 +20,5 @@ public abstract class ItemClass : MonoBehaviour
     }
 
     public abstract void UseItem();
+
 }

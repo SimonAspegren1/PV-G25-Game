@@ -5,6 +5,7 @@ using UnityEngine;
 public class ItemTest : MonoBehaviour
 {
     [SerializeField] ItemClass item;
+    [SerializeField] int n;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +18,10 @@ public class ItemTest : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             item.UseItem();
+        }
+        if(item is Note)
+        {
+            n++;
         }
     }
 }

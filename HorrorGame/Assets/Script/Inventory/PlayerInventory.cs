@@ -18,4 +18,12 @@ public class PlayerInventory : MonoBehaviour
     {
         inventory.Container.Clear();
     }
+
+    //private void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Space))
+    //    {
+    //        inventory.Container[0].myItem.UseItem();
+    //    }
+    //}
 }
