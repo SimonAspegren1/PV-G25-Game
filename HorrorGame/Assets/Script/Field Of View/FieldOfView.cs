@@ -5,12 +5,13 @@ using UnityEngine;
 public class FieldOfView : MonoBehaviour
 {
 
-    float myFov = 90f;
+    float myFov = 80f;
     Vector3 myOrigin;
     int myRayCount = 50;
     float myAngle = 0f;
     float myAngleIncrease;
     float myViewDistance = 8f;
+    Vector3 myDirection;
 
     Vector3[] myVertices;
     Vector2[] myUv;
@@ -27,7 +28,20 @@ public class FieldOfView : MonoBehaviour
     }
    
 
-    public void Start()
+    //public void Start()
+    //{
+    //    myMesh = new Mesh();
+    //    GetComponent<MeshFilter>().mesh = myMesh;
+    //    myAngleIncrease = myFov / myRayCount;
+
+    //    myVertices = new Vector3[myRayCount + 1 + 1];
+    //    myUv = new Vector2[myVertices.Length];
+    //    myTriangles = new int[myRayCount * 3];
+
+    //    myOrigin = Vector3.zero;
+    //}
+
+    private void Start()
     {
         myMesh = new Mesh();
         GetComponent<MeshFilter>().mesh = myMesh;
@@ -38,31 +52,28 @@ public class FieldOfView : MonoBehaviour
         myTriangles = new int[myRayCount * 3];
 
         myOrigin = Vector3.zero;
-    }
 
-    private void Update()
-    {
         myVertices[0] = myOrigin;
 
         int tempVertexIndex = 1;
         int tempTriangelIndex = 0;
-        for (int i = 0; i <= myRayCount; i++)
+        for (int i = 0; i < myRayCount; i++)
         {
             Vector3 tempVertex;
 
             RaycastHit2D raycastHit2D = Physics2D.Raycast(transform.position, getVectorFromAngle(myAngle), myViewDistance, myLayerMask);
             //Debug.Log(raycastHit2D.point);
-
+            Debug.Log(getVectorFromAngle(myAngle));
             if (raycastHit2D.collider == null)
             {
-                tempVertex = transform.position + getVectorFromAngle(myAngle) * myViewDistance;
+                tempVertex = myOrigin + getVectorFromAngle(myAngle) * myViewDistance;
             }
             else
             {
                 tempVertex = raycastHit2D.point;
             }
-            Debug.Log(tempVertex);
-            Debug.Log(raycastHit2D.point);
+            //Debug.Log(tempVertex);
+            //Debug.Log(raycastHit2D.point);
 
             myVertices[tempVertexIndex] = tempVertex;
 
@@ -77,6 +88,7 @@ public class FieldOfView : MonoBehaviour
 
             tempVertexIndex++;
             myAngle -= myAngleIncrease;
+
         }
 
         myMesh.vertices = myVertices;
