@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     public PlayerState currentState;
     public float speed;
     private Rigidbody2D myRigidbody;
-    private Vector3 change;
+    public Vector3 change;
     private Animator anim;
     public FloatValue currentHealth;
     public SignalManager PlayerHealthSignal;
@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     public SpriteRenderer receivedItemSprite;
     [SerializeField] bool IsResistingDMG = false;
     [SerializeField] float DamageRes;
+    [SerializeField] FieldOfView myFlashLight;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +40,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //myFlashLight.setOrgin(transform.position);
+
         //Is The Player In An Interaction
         if (currentState == PlayerState.interact)
         {
