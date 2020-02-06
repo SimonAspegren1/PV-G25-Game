@@ -68666,6 +68666,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Patrol Log
       objectReference: {fileID: 0}
+    - target: {fileID: 6552346461818044174, guid: 5c564f2009df07c499255b1d17b01c49,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e7970adbb1cfcd640948bdf627e8e0d1, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c564f2009df07c499255b1d17b01c49, type: 3}
 --- !u!1 &7157184580835535040 stripped
