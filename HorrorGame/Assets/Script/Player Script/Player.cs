@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum PlayerState
 {
@@ -23,6 +24,9 @@ public class Player : MonoBehaviour
     [SerializeField] float DamageRes;
     [SerializeField] FieldOfView myFlashLight;
 
+
+    Scene myCurrentScene = SceneManager.GetActiveScene();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +38,17 @@ public class Player : MonoBehaviour
         anim.SetFloat("moveX", 0);
         anim.SetFloat("moveY", -1);
 
-        transform.position = startingPos.initialValue;
+
+        
+
+        // Retrieve the name of this scene.
+        string tempsceneName = myCurrentScene.name;
+
+        if (tempsceneName == "New Game")
+        {
+            transform.position = startingPos.initialValue;
+        }
+        
     }
 
     // Update is called once per frame
