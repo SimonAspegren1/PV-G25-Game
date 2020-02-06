@@ -1,43 +1,34 @@
 fileFormatVersion: 2
-guid: cb3e9360c716ac141beff8d35a707d0b
+guid: 2bf328751afe9c540a41791af53c61bb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4780992381573241017
-    second: Roadtiles_0
+      213: 6304261341061956524
+    second: Roadtiles2_0
   - first:
-      213: -1122957996303169193
-    second: Roadtiles_1
+      213: -8319848235084318819
+    second: Roadtiles2_1
   - first:
-      213: -2831794219981452716
-    second: Roadtiles_2
+      213: 2082657285324469486
+    second: Roadtiles2_2
   - first:
-      213: -1596276498302349530
-    second: Roadtiles_3
+      213: 309689757007128357
+    second: Roadtiles2_3
   - first:
-      213: -383485869574357574
-    second: Roadtiles_4
+      213: 7224058498490174386
+    second: Roadtiles2_4
   - first:
-      213: -36659837204003251
-    second: Roadtiles_5
+      213: 6178149081299723761
+    second: Roadtiles2_5
   - first:
-      213: 602717278701946686
-    second: Roadtiles_6
+      213: 6434680998802835352
+    second: Roadtiles2_6
   - first:
-      213: -3657616994306268522
-    second: Roadtiles_7
+      213: -626340820084380713
+    second: Roadtiles2_7
   - first:
-      213: -7907752605369912608
-    second: Roadtiles_8
-  - first:
-      213: -2451808306819510297
-    second: Roadtiles_9
-  - first:
-      213: 8622096167383035437
-    second: Roadtiles_10
-  - first:
-      213: -1611675696431370353
-    second: Roadtiles_11
+      213: -7275281175559735417
+    second: Roadtiles2_8
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -146,7 +137,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Roadtiles_0
+      name: Roadtiles2_0
       rect:
         serializedVersion: 2
         x: 0
@@ -160,14 +151,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c90c0ad1ac6fbbe449ec2efb5bf43d06
-      internalID: 4780992381573241017
+      spriteID: 5eba2a7ce9e18b34fb05514377244c48
+      internalID: 6304261341061956524
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Roadtiles_1
+      name: Roadtiles2_1
       rect:
         serializedVersion: 2
         x: 128
@@ -181,14 +172,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e1134fe83ff24604590d909627688f5d
-      internalID: -1122957996303169193
+      spriteID: 474f856d16120714c9e228cfa6dd7147
+      internalID: -8319848235084318819
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Roadtiles_2
+      name: Roadtiles2_2
       rect:
         serializedVersion: 2
         x: 256
@@ -202,14 +193,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b8f7d0e451c39d44f942a08548a1e364
-      internalID: -2831794219981452716
+      spriteID: 81edfc9fc8377b04a8d36a2d5f5f3514
+      internalID: 2082657285324469486
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Roadtiles_3
+      name: Roadtiles2_3
       rect:
         serializedVersion: 2
         x: 384
@@ -223,14 +214,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3e11d7c49f85eb945a1d1e7f175c296f
-      internalID: -1596276498302349530
+      spriteID: bcffd7e742a3a774c91f9a18a3bd05df
+      internalID: 309689757007128357
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Roadtiles_4
+      name: Roadtiles2_4
       rect:
         serializedVersion: 2
         x: 0
@@ -244,14 +235,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2658305c9ab9d66438f99e31bd4127d7
-      internalID: -383485869574357574
+      spriteID: 892e73cb64da0d14780a72fc5bf6afd5
+      internalID: 7224058498490174386
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Roadtiles_5
+      name: Roadtiles2_5
       rect:
         serializedVersion: 2
         x: 128
@@ -265,14 +256,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 06ce2d520c2186940a98f01c6896ee30
-      internalID: -36659837204003251
+      spriteID: 2446553b72fca074c862a2505e220f41
+      internalID: 6178149081299723761
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Roadtiles_6
+      name: Roadtiles2_6
       rect:
         serializedVersion: 2
         x: 256
@@ -286,14 +277,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 71d2a1f66012e39448142fea9c42970d
-      internalID: 602717278701946686
+      spriteID: 831fd94acf2243f448c9e153a7f44898
+      internalID: 6434680998802835352
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Roadtiles_7
+      name: Roadtiles2_7
       rect:
         serializedVersion: 2
         x: 384
@@ -307,14 +298,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8c8c7cc56e7bdb54e949274b0ccf29d8
-      internalID: -3657616994306268522
+      spriteID: 8dae96916925c43488007a908702ea51
+      internalID: -626340820084380713
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Roadtiles_8
+      name: Roadtiles2_8
       rect:
         serializedVersion: 2
         x: 0
@@ -328,71 +319,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cbc5202bb00c23f48adfab7ff879d44c
-      internalID: -7907752605369912608
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Roadtiles_9
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 128
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8350917c194ebb74fb385d76140020b5
-      internalID: -2451808306819510297
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Roadtiles_10
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 128
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 329f621fe475d4d42841de7b2e8439f9
-      internalID: 8622096167383035437
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Roadtiles_11
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 128
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 581d496dd4beecc43b5a02f1b5958b4c
-      internalID: -1611675696431370353
+      spriteID: 7442ce7c0caec6943b5c775b95776a88
+      internalID: -7275281175559735417
       vertices: []
       indices: 
       edges: []
