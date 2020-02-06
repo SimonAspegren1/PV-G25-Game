@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameOverMenu : MonoBehaviour
 {
-    public void TryAgain()
+    public void Restart()
     {
         SceneManager.LoadScene("NewGame");
     }
