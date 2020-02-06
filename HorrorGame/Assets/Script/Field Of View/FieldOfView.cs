@@ -2,6 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+enum FlashLightDir
+{
+    Right,
+    Left,
+    Up,
+    Down
+}
 public class FieldOfView : MonoBehaviour
 {
 
@@ -16,10 +23,22 @@ public class FieldOfView : MonoBehaviour
     Vector3[] myVertices;
     Vector2[] myUv;
     int[] myTriangles;
+    [SerializeField] Transform PlayerT;
+    [SerializeField] Player ThePlayer;
+    [SerializeField] SpriteRenderer SR;
 
     [SerializeField] private LayerMask myLayerMask;
 
     private Mesh myMesh;
+    float angle;
+    bool IsChangingY = false;
+    bool IsChangingX = false;
+    bool DontChangeAngleForY = false;
+    public float myEnergy;
+    float fov;
+    FlashLightDir myFlashDir = FlashLightDir.Right;
+    MeshRenderer myMeshRenderer;
+    bool Isflashing = false;
 
     public Vector3 getVectorFromAngle(float anAngle)
     {
@@ -43,56 +62,206 @@ public class FieldOfView : MonoBehaviour
 
     private void Start()
     {
+        SetAimDirection(Vector2.right);
         myMesh = new Mesh();
         GetComponent<MeshFilter>().mesh = myMesh;
-        myAngleIncrease = myFov / myRayCount;
+        myMeshRenderer = GetComponent<MeshRenderer>();
+        myMeshRenderer.sortingLayerID = SR.sortingLayerID;
+        //myAngleIncrease = myFov / myRayCount;
 
-        myVertices = new Vector3[myRayCount + 1 + 1];
-        myUv = new Vector2[myVertices.Length];
-        myTriangles = new int[myRayCount * 3];
+        //myVertices = new Vector3[myRayCount + 1 + 1];
+        //myUv = new Vector2[myVertices.Length];
+        //myTriangles = new int[myRayCount * 3];
 
-        myOrigin = Vector3.zero;
+        //myOrigin = Vector3.zero;
 
-        myVertices[0] = myOrigin;
+        //myVertices[0] = myOrigin;
 
-        int tempVertexIndex = 1;
-        int tempTriangelIndex = 0;
-        for (int i = 0; i < myRayCount; i++)
+        //int tempVertexIndex = 1;
+        //int tempTriangelIndex = 0;
+        //for (int i = 0; i < myRayCount; i++)
+        //{
+        //    Vector3 tempVertex;
+
+        //    RaycastHit2D raycastHit2D = Physics2D.Raycast(transform.position, getVectorFromAngle(myAngle), myViewDistance, myLayerMask);
+        //    //Debug.Log(raycastHit2D.point);
+        //    Debug.Log(getVectorFromAngle(myAngle));
+        //    if (raycastHit2D.collider == null)
+        //    {
+        //        tempVertex = myOrigin + getVectorFromAngle(myAngle) * myViewDistance;
+        //    }
+        //    else
+        //    {
+        //        tempVertex = raycastHit2D.point;
+        //    }
+        //    //Debug.Log(tempVertex);
+        //    //Debug.Log(raycastHit2D.point);
+
+        //    myVertices[tempVertexIndex] = tempVertex;
+
+        //    if (i > 0)
+        //    {
+        //        myTriangles[tempTriangelIndex + 0] = 0;
+        //        myTriangles[tempTriangelIndex + 1] = tempVertexIndex - 1;
+        //        myTriangles[tempTriangelIndex + 2] = tempVertexIndex;
+
+        //        tempTriangelIndex += 3;
+        //    }
+
+        //    tempVertexIndex++;
+        //    myAngle -= myAngleIncrease;
+
+        //}
+
+        //myMesh.vertices = myVertices;
+        //myMesh.uv = myUv;
+        //myMesh.triangles = myTriangles;
+    }
+
+    Vector3 GetVectorFromAngle(float angle)
+    {
+        float angleRad = angle * (Mathf.PI / 180);
+        return new Vector3(Mathf.Cos(angleRad), Mathf.Sin(angleRad));
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F))
         {
-            Vector3 tempVertex;
+            Isflashing = !Isflashing;
+        }
+        if (Isflashing)
+        {
+            FlashThelight();
+            myEnergy -= Time.deltaTime;
+        }
+        else
+        {
+            myMesh.Clear();
+        }
+    }
 
-            RaycastHit2D raycastHit2D = Physics2D.Raycast(transform.position, getVectorFromAngle(myAngle), myViewDistance, myLayerMask);
-            //Debug.Log(raycastHit2D.point);
-            Debug.Log(getVectorFromAngle(myAngle));
-            if (raycastHit2D.collider == null)
+    void FlashThelight()
+    {
+        transform.position = PlayerT.position;
+        fov = 90;
+        fov = Mathf.Clamp(myEnergy, 0, 90);
+        Vector3 origin = transform.position;
+        int rayCount = 50;
+        if(myFlashDir == FlashLightDir.Right)
+        {
+            SetAimDirection(Vector2.right);
+        }
+        if(myFlashDir == FlashLightDir.Left)
+        {
+            SetAimDirection(Vector2.left);
+        }
+        if(myFlashDir == FlashLightDir.Up)
+        {
+            SetAimDirection(Vector2.up);
+        }
+        if(myFlashDir == FlashLightDir.Down)
+        {
+            SetAimDirection(Vector2.down);
+        }
+        if(ThePlayer.change.x < 0 )
+        {
+            if(IsChangingY && !IsChangingX)
             {
-                tempVertex = myOrigin + getVectorFromAngle(myAngle) * myViewDistance;
+                DontChangeAngleForY = true;
+            }
+            SetAimDirection(Vector2.left);
+            myFlashDir = FlashLightDir.Left;
+            IsChangingX = true;
+        }
+        if(ThePlayer.change.x > 0)
+        {
+            if (IsChangingY && !IsChangingX)
+            {
+                DontChangeAngleForY = true;
+            }
+            SetAimDirection(Vector2.right);
+            myFlashDir = FlashLightDir.Right;
+            IsChangingX = true;
+        }
+        if(ThePlayer.change.y > 0 && !DontChangeAngleForY)
+        {
+            IsChangingY = true;
+            SetAimDirection(Vector2.up);
+            myFlashDir = FlashLightDir.Up;
+        }
+        if(ThePlayer.change.y < 0&& !DontChangeAngleForY)
+        {
+            IsChangingY = true;
+            SetAimDirection(Vector2.down);
+            myFlashDir = FlashLightDir.Down;
+        }
+        if(ThePlayer.change.x == 0)
+        {
+            IsChangingX = false;
+            DontChangeAngleForY = false;
+        }
+        if(ThePlayer.change.y == 0)
+        {
+            IsChangingY = false;
+            DontChangeAngleForY = false;
+        }
+        float angleincrease = fov / rayCount;
+        float viewdistance = 20f;
+        viewdistance = Mathf.Clamp(myEnergy, 0, 20);
+        Vector3[] vertices = new Vector3[rayCount + 1 + 1];
+        Vector2[] uv = new Vector2[vertices.Length];
+        int[] triangles = new int[rayCount * 3];
+        vertices[0] = origin;
+
+        int vertexIndex = 1;
+        int triangleIndex = 0;
+        for (int i = 0; i <= rayCount; i++)
+        {
+            Vector3 vertex;
+            RaycastHit2D raycasthit = Physics2D.Raycast(origin, GetVectorFromAngle(angle), viewdistance, myLayerMask);
+            if (raycasthit.collider == null)
+            {
+                vertex = origin + GetVectorFromAngle(angle) * viewdistance;
             }
             else
             {
-                tempVertex = raycastHit2D.point;
+                vertex = raycasthit.point;
+                if (raycasthit.collider.gameObject.GetComponent<LightReflect>())
+                {
+                    raycasthit.collider.gameObject.GetComponent<LightReflect>().HasLightOnIt = true;
+                    raycasthit.collider.gameObject.GetComponent<SpriteRenderer>().sortingLayerID = myMeshRenderer.sortingLayerID;
+                }
+                Debug.Log("True" + raycasthit.collider.name + raycasthit.point);
             }
-            //Debug.Log(tempVertex);
-            //Debug.Log(raycastHit2D.point);
-
-            myVertices[tempVertexIndex] = tempVertex;
-
+            vertices[vertexIndex] = vertex;
             if (i > 0)
             {
-                myTriangles[tempTriangelIndex + 0] = 0;
-                myTriangles[tempTriangelIndex + 1] = tempVertexIndex - 1;
-                myTriangles[tempTriangelIndex + 2] = tempVertexIndex;
-
-                tempTriangelIndex += 3;
+                triangles[triangleIndex] = 0;
+                triangles[triangleIndex + 1] = vertexIndex - 1;
+                triangles[triangleIndex + 2] = vertexIndex;
+                triangleIndex += 3;
             }
-
-            tempVertexIndex++;
-            myAngle -= myAngleIncrease;
-
+            vertexIndex++;
+            angle -= angleincrease;
         }
 
-        myMesh.vertices = myVertices;
-        myMesh.uv = myUv;
-        myMesh.triangles = myTriangles;
+        myMesh.vertices = vertices;
+        myMesh.uv = uv;
+        myMesh.triangles = triangles;
+        transform.position = Vector3.zero;
+    }
+
+    float GetAngleFromDirection(Vector3 dir)
+    {
+        dir = dir.normalized;
+        float n = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        if (n < 0) n += 360;
+        return n;
+    }
+
+    void SetAimDirection(Vector3 dir)
+    {
+        angle = GetAngleFromDirection(dir) + fov / 2; 
     }
 }

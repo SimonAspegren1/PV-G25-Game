@@ -542,7 +542,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 550a5d6229340f44bb1ab033e117f5b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 767716642}
+  item: {fileID: 767716644}
   n: 0
 --- !u!4 &767716641
 Transform:
@@ -570,6 +570,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdf94a3bb2b66c847b04a6638df83aca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prefab: {fileID: 0}
+  Stackable: 0
   Name: Key
   Description: Open the door
   DoorToOpen: {fileID: 300390473}
@@ -586,6 +588,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a34a2917d7effbf44b9dca94f2555f57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prefab: {fileID: 0}
+  Stackable: 0
   Name: EnergyDrink
   Description: Gives you speed
   DurationTime: 10
@@ -602,6 +606,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ecbe3c8c0e2dbf41b437dd8615f263f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prefab: {fileID: 0}
+  Stackable: 0
   Name: Picture
   Description: A picture of a door
   Panel: {fileID: 660244399}
@@ -636,6 +642,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd80deb8a9dfd5842aaaff72de23d239, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prefab: {fileID: 0}
+  Stackable: 0
   Name: Medkit
   Description: Restores Hp
   AmountToRestore: 1
@@ -1389,6 +1397,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: 0
   speed: 4
+  change: {x: 0, y: 0, z: 0}
   currentHealth: {fileID: 11400000, guid: 58c2ee3db2bf7a04c96cbb42cf46c1a5, type: 2}
   PlayerHealthSignal: {fileID: 11400000, guid: 11f894201b8893640a8bd43d6cc1b885, type: 2}
   startingPos: {fileID: 11400000, guid: f246c4fdaa4c047418b4cd903268eae1, type: 2}
@@ -1396,6 +1405,7 @@ MonoBehaviour:
   receivedItemSprite: {fileID: 8013938004151055729}
   IsResistingDMG: 0
   DamageRes: 0
+  myFlashLight: {fileID: 0}
 --- !u!1 &8013938004126430853
 GameObject:
   m_ObjectHideFlags: 0
