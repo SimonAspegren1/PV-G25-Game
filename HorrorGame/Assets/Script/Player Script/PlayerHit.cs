@@ -1,30 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHit : MonoBehaviour
 {
+    //public static int healthPoints = 6;
+    //public int internalHealth;
+    //public GameObject Heart;
 
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    //private void OnTriggerEnter2D(Collider2D collision)
+    //void Update()
     //{
-    //    if (collision.CompareTag("breakable"))
+    //    internalHealth = healthPoints;
+    //    if (healthPoints <= 0)
     //    {
-    //        collision.GetComponent<BowlManager>().Smash();
+    //        SceneManager.LoadScene("GameOver");
     //    }
-    //}
 
-}
+
+        //private void OnTriggerEnter2D(Collider2D collision)
+        //{
+        //    if (collision.CompareTag("breakable"))
+        //    {
+        //        collision.GetComponent<BowlManager>().Smash();
+        //    }
+        //}
+
+    }
+

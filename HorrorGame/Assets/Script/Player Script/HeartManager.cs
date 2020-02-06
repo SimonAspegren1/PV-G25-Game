@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class HeartManager : MonoBehaviour
 {
@@ -34,7 +35,7 @@ public class HeartManager : MonoBehaviour
         float tempHealth = playerCurrentHealth.RuntimeValue / 2;
         for (int i = 0; i < heartContainers.initialValue; i++)
         {
-            if (i <= tempHealth-1)
+            if (i <= tempHealth - 1)
             {
                 //Full Heart
                 hearts[i].sprite = fullHeart;
@@ -59,6 +60,7 @@ public class HeartManager : MonoBehaviour
                 //Half Full Heart
                 hearts[i].sprite = halfFullHeart;
             }
+           
         }
     }
 }
