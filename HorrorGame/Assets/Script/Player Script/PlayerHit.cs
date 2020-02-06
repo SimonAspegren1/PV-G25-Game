@@ -5,17 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHit : MonoBehaviour
 {
-    //public static int healthPoints = 6;
-    //public int internalHealth;
-    //public GameObject Heart;
-
-    //void Update()
-    //{
-    //    internalHealth = healthPoints;
-    //    if (healthPoints <= 0)
-    //    {
-    //        SceneManager.LoadScene("GameOver");
-    //    }
 
 
         //private void OnTriggerEnter2D(Collider2D collision)
@@ -26,5 +15,5 @@ public class PlayerHit : MonoBehaviour
         //    }
         //}
 
-    }
+}
 
