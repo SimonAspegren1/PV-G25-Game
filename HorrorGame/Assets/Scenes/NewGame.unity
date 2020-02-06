@@ -2209,7 +2209,7 @@ GameObject:
   - component: {fileID: 1811815568}
   - component: {fileID: 1811815570}
   - component: {fileID: 1811815569}
-  m_Layer: 5
+  m_Layer: 1
   m_Name: Night
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2249,7 +2249,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.084905684, g: 0.076495215, b: 0.076495215, a: 0.392}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
