@@ -1,19 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿//using System.Collections;
+//using System.Collections.Generic;
+//using UnityEngine;
+//using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
-{
-    bool gameHasEnded = false;
+//public class GameManager : MonoBehaviour
+//{
+//    bool gameHasEnded = false;
 
-    public void Endgame()
-    {
-        if (gameHasEnded == false)
-        {
-            gameHasEnded = true;
-            SceneManager.Loadscene(GameOver);
-        }
+//    public void Endgame()
+//    {
+//        if (gameHasEnded == false)
+//        {
+//            gameHasEnded = true;
+//            SceneManager.Loadscene(GameOver);
+//        }
 
-    }
-}
+//    }
+//}
