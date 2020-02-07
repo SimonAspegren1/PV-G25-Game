@@ -88,14 +88,20 @@ public class DisplayInventory : MonoBehaviour
     public void UseTheItem()
     {
         Debug.Log("True");
-        inventory.Container[0].myItem.UseItem();
-        inventory.Container[0].myAmount -= 1;
+        
+        for (int i = 0; i < inventory.Container.Count; i++)
+        {
+            
+            inventory.Container[i].myItem.UseItem();
+            inventory.Container[i].myAmount -= 1;
+        }
+        
 
     }
 
     //void DestroyTheItemDisplay()
     //{
-        
+
     //        for (int a = 0; a < myObjects.Count; a++)
     //        {
     //            if(itemsDisplayed.ContainsValue(myObjects[a]))
@@ -103,7 +109,8 @@ public class DisplayInventory : MonoBehaviour
     //            Destroy(myObjects[a]);
     //            }
     //        }
-        
+
     //}
+    //public static int AccessButtonInt { get => myItems; set => myItems = value; }
 
 }

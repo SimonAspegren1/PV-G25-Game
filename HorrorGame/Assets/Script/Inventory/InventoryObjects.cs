@@ -6,7 +6,7 @@ using UnityEngine;
 public class InventoryObjects : ScriptableObject
 {
     public List<InventorySlot> Container = new List<InventorySlot>();
-    public void AddItem(ItemClass _myItem, int _myAmount)
+    public void AddItem(ItemClass _myItem, int _myAmount, int _myId)
     {
         bool tempHasItem = false;
         for (int i = 0; i < Container.Count; i++)
@@ -14,13 +14,15 @@ public class InventoryObjects : ScriptableObject
             if (Container[i].myItem == _myItem)
             {
                 Container[i].AddAmount(_myAmount);
+                
                 tempHasItem = true;
                 break;
             }
         }
         if (!tempHasItem)
         {
-            Container.Add(new InventorySlot(_myItem, _myAmount));
+            Container.Add(new InventorySlot(_myItem, _myAmount, _myId));
+            _myId++;
         }
     }
 
@@ -29,10 +31,12 @@ public class InventoryObjects : ScriptableObject
     {
         public ItemClass myItem;
         public int myAmount;
-        public InventorySlot(ItemClass _myItem, int _myAmount)
+        public int myId = 0;
+        public InventorySlot(ItemClass _myItem, int _myAmount, int _myId)
         {
             myItem = _myItem;
             myAmount = _myAmount;
+            myId = _myId;
         }
         public void AddAmount(int Value)
         {
