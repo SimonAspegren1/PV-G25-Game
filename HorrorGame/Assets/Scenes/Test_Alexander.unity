@@ -637,7 +637,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 550a5d6229340f44bb1ab033e117f5b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 767716645}
+  item: {fileID: 767716644}
   n: 0
 --- !u!4 &767716641
 Transform:
@@ -802,8 +802,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc3d06adc92e40b46a887fc836d1b9c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerT: {fileID: 8013938003590311748}
-  ThePlayer: {fileID: 8013938004108708911}
   SR: {fileID: 1392259161}
   myLayerMask:
     serializedVersion: 2

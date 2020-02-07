@@ -23,8 +23,8 @@ public class FieldOfView : MonoBehaviour
     Vector3[] myVertices;
     Vector2[] myUv;
     int[] myTriangles;
-    [SerializeField] Transform PlayerT;
-    [SerializeField] Player ThePlayer;
+    Transform PlayerT;
+    Player ThePlayer;
     [SerializeField] SpriteRenderer SR;
 
     [SerializeField] private LayerMask myLayerMask;
@@ -47,18 +47,7 @@ public class FieldOfView : MonoBehaviour
     }
    
 
-    //public void Start()
-    //{
-    //    myMesh = new Mesh();
-    //    GetComponent<MeshFilter>().mesh = myMesh;
-    //    myAngleIncrease = myFov / myRayCount;
 
-    //    myVertices = new Vector3[myRayCount + 1 + 1];
-    //    myUv = new Vector2[myVertices.Length];
-    //    myTriangles = new int[myRayCount * 3];
-
-    //    myOrigin = Vector3.zero;
-    //}
 
     private void Start()
     {
@@ -67,55 +56,8 @@ public class FieldOfView : MonoBehaviour
         GetComponent<MeshFilter>().mesh = myMesh;
         myMeshRenderer = GetComponent<MeshRenderer>();
         myMeshRenderer.sortingLayerID = SR.sortingLayerID;
-        //myAngleIncrease = myFov / myRayCount;
-
-        //myVertices = new Vector3[myRayCount + 1 + 1];
-        //myUv = new Vector2[myVertices.Length];
-        //myTriangles = new int[myRayCount * 3];
-
-        //myOrigin = Vector3.zero;
-
-        //myVertices[0] = myOrigin;
-
-        //int tempVertexIndex = 1;
-        //int tempTriangelIndex = 0;
-        //for (int i = 0; i < myRayCount; i++)
-        //{
-        //    Vector3 tempVertex;
-
-        //    RaycastHit2D raycastHit2D = Physics2D.Raycast(transform.position, getVectorFromAngle(myAngle), myViewDistance, myLayerMask);
-        //    //Debug.Log(raycastHit2D.point);
-        //    Debug.Log(getVectorFromAngle(myAngle));
-        //    if (raycastHit2D.collider == null)
-        //    {
-        //        tempVertex = myOrigin + getVectorFromAngle(myAngle) * myViewDistance;
-        //    }
-        //    else
-        //    {
-        //        tempVertex = raycastHit2D.point;
-        //    }
-        //    //Debug.Log(tempVertex);
-        //    //Debug.Log(raycastHit2D.point);
-
-        //    myVertices[tempVertexIndex] = tempVertex;
-
-        //    if (i > 0)
-        //    {
-        //        myTriangles[tempTriangelIndex + 0] = 0;
-        //        myTriangles[tempTriangelIndex + 1] = tempVertexIndex - 1;
-        //        myTriangles[tempTriangelIndex + 2] = tempVertexIndex;
-
-        //        tempTriangelIndex += 3;
-        //    }
-
-        //    tempVertexIndex++;
-        //    myAngle -= myAngleIncrease;
-
-        //}
-
-        //myMesh.vertices = myVertices;
-        //myMesh.uv = myUv;
-        //myMesh.triangles = myTriangles;
+        PlayerT = GameObject.FindGameObjectWithTag("Player").transform;
+        ThePlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
 
     Vector3 GetVectorFromAngle(float angle)
