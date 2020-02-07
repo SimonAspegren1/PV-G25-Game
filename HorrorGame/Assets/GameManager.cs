@@ -1,7 +1,5 @@
-﻿//using System.Collections;
-//using System.Collections.Generic;
-//using UnityEngine;
-//using UnityEngine.SceneManagement;
+﻿//using UnityEngine;
+//using UnityEngine.SceneManagement.SceneManager;
 
 //public class GameManager : MonoBehaviour
 //{
@@ -12,8 +10,13 @@
 //        if (gameHasEnded == false)
 //        {
 //            gameHasEnded = true;
-//            SceneManager.Loadscene(GameOver);
+//            Debug.Log("GAME OVER");
+//            start();
 //        }
-
+//    }
+//    void start()
+//    {
+//        SceneManager.Loadscene(GameOver);
 //    }
 //}
+
