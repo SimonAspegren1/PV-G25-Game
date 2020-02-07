@@ -9,6 +9,6 @@ public class BackBtn : MonoBehaviour
 
     public void NewGame()
     {
-        SceneManager.LoadScene("NewGame");
+        SceneManager.LoadScene("Intropart");
     }
 }

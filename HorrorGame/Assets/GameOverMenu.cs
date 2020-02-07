@@ -7,7 +7,7 @@ public class GameOverMenu : MonoBehaviour
 {
     public void Restart()
     {
-        SceneManager.LoadScene("NewGame");
+        SceneManager.LoadScene("Intropart");
     }
 
     public void QuitGame()

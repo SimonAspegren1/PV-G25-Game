@@ -7,7 +7,7 @@ public class BtnManager : MonoBehaviour
 {
     public void NewGameBtn(string newGame)
     {
-        SceneManager.LoadScene(newGame);
+        SceneManager.LoadScene("Intropart");
     }
     public void LoadGameBtn(string loadGame)
     {
@@ -16,5 +16,9 @@ public class BtnManager : MonoBehaviour
     public void QuitGameBtn()
     {
         Application.Quit();
+    }
+    public void ControlBtn(string ControlBtn)
+    {
+        SceneManager.LoadScene("Controller");
     }
 }

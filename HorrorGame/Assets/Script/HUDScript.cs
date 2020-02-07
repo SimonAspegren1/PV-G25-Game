@@ -5,12 +5,7 @@
 //public class HUDscript : MonoBehaviour
 //{
 
-//    public Sprite HealthyImage;
-//    public Sprite KindaHealthyImage;
-//    public Sprite HurtImage;
-//    public Sprite BadlyHurtImage;
-//    public Sprite VeryBadlyHurtImage;
-//    public Sprite DyingImage;
+//    public Image[] healthImages;
 
 //    private SpriteRenderer sr;
 
