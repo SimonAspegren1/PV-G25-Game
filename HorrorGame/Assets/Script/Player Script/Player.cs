@@ -24,12 +24,10 @@ public class Player : MonoBehaviour
     [SerializeField] float DamageRes;
     [SerializeField] FieldOfView myFlashLight;
 
-
-    Scene myCurrentScene = SceneManager.GetActiveScene();
-
     // Start is called before the first frame update
     void Start()
     {
+        Scene myCurrentScene = SceneManager.GetActiveScene();
         currentState = PlayerState.walk;
         anim = GetComponent<Animator>();
         myRigidbody = GetComponent<Rigidbody2D>();
