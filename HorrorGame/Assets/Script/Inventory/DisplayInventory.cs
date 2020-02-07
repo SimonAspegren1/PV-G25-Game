@@ -29,7 +29,7 @@ public class DisplayInventory : MonoBehaviour
             if (itemsDisplayed.ContainsKey(inventory.Container[i]))
             {
                 itemsDisplayed[inventory.Container[i]].GetComponentInChildren<TextMeshProUGUI>().text = inventory.Container[i].myAmount.ToString("n0");
-            }
+            }           
             else
             {
                 var obj = Instantiate(inventory.Container[i].myItem.prefab, Vector3.zero, Quaternion.identity, transform);
@@ -38,6 +38,7 @@ public class DisplayInventory : MonoBehaviour
                 obj.GetComponentInChildren<TextMeshProUGUI>().text = inventory.Container[i].myAmount.ToString("n0");
                 itemsDisplayed.Add(inventory.Container[i], obj);
 
+               
             }
             
         }
@@ -50,6 +51,7 @@ public class DisplayInventory : MonoBehaviour
             obj.GetComponent<RectTransform>().localPosition = GetPostion(i);
             obj.GetComponentInChildren<TextMeshProUGUI>().text = inventory.Container[i].myAmount.ToString("n0");
             itemsDisplayed.Add(inventory.Container[i], obj);
+            
         }
     }
     public Vector3 GetPostion(int i)
