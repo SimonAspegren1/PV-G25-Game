@@ -11507,7 +11507,7 @@ GameObject:
   - component: {fileID: 1850943759}
   - component: {fileID: 1850943761}
   - component: {fileID: 1850943760}
-  m_Layer: 5
+  m_Layer: 1
   m_Name: NIght
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11585,7 +11585,7 @@ GameObject:
   - component: {fileID: 1982660274}
   - component: {fileID: 1982660273}
   - component: {fileID: 1982660272}
-  m_Layer: 5
+  m_Layer: 1
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11859,10 +11859,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 5068202588191636632, guid: e77219b72f5819642aae4440be648d56,
+        type: 3}
+      propertyPath: m_Layer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5068202588590009127, guid: e77219b72f5819642aae4440be648d56,
         type: 3}
       propertyPath: m_Color.a
       value: 0.8901961
+      objectReference: {fileID: 0}
+    - target: {fileID: 5068202588590009145, guid: e77219b72f5819642aae4440be648d56,
+        type: 3}
+      propertyPath: m_Layer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e77219b72f5819642aae4440be648d56, type: 3}
