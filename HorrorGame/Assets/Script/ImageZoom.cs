@@ -37,6 +37,10 @@ public class ImageZoom : ScrollRect
         }
         else
         {
+            if (isPinching)
+            {
+                StartCoroutine(KeepsInLimit());
+            }
             isPinching = false;
             if(Input.touchCount == 0)
             {
@@ -106,6 +110,13 @@ public class ImageZoom : ScrollRect
     {
         if (isPinching || blockPan) return;
         base.SetContentAnchoredPosition(position);
+    }
+
+    IEnumerator KeepsInLimit()
+    {
+        this.movementType = MovementType.Elastic;
+        yield return new WaitForSeconds(2f);
+        this.movementType = MovementType.Clamped;
     }
 
 }

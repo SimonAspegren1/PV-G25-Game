@@ -30,6 +30,7 @@ public class Note : ItemClass
         ExitButton.gameObject.SetActive(true);
         NoteText.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(NoteText.gameObject.GetComponent<RectTransform>().sizeDelta.x
             ,NoteText.preferredHeight);
+        ScrollArea.GetComponentInChildren<Scrollbar>().value = 1;
     }
 
     void ExitNote()
