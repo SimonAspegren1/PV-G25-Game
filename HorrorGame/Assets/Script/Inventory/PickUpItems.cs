@@ -6,12 +6,11 @@ public class PickUpItems : MonoBehaviour
 {
     public InventoryObjects inventory;
 
-    public void Start()
+   
+    public void UseItem()
     {
-        inventory.Container[0].myItem.UseItem();           
+        inventory.Container[0].myItem.UseItem();
         inventory.Container[0].myAmount -= 1;
-
-        
     }
     public void Update()
     {
