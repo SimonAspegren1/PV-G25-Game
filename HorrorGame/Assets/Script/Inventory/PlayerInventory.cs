@@ -8,9 +8,10 @@ public class PlayerInventory : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         var item = collision.GetComponent<InventoryItems>();
-        if (item && inventory.Container.Count <= 12 && Input.GetKeyDown(KeyCode.Space))
+        if (item && inventory.Container.Count <= 12)
         {
-            inventory.AddItem(item.myitem, 1);
+            inventory.AddItem(item.myitem, 1, 0);
+           
             Destroy(collision.gameObject);
         }
     }
