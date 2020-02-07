@@ -7,14 +7,14 @@ public class Picture : ItemClass
 {
     [SerializeField] string Name, Description;
     [SerializeField] GameObject Panel;
-    [SerializeField] Button Exitbtn;
-    [SerializeField] ImageZoom IZ;
+    [SerializeField] Transform Canvas;
+    GameObject ClonePanel;
+
     // Start is called before the first frame update
     void Start()
     {
         ItemName = Name;
         ItemDescription = Description;
-        Exitbtn.onClick.AddListener(ExitPicture);
     }
 
     // Update is called once per frame
@@ -25,13 +25,13 @@ public class Picture : ItemClass
 
     public override void UseItem()
     {
-        Panel.SetActive(true);
+        ClonePanel = GameObject.Instantiate(Panel,Canvas );
+       ClonePanel.SetActive(true);
+        ClonePanel.GetComponentInChildren<Button>().onClick.AddListener(ExitPicture);
     }
 
     void ExitPicture()
     {
-        IZ.currentZoom = 1;
-        IZ.content.position = IZ.StartPos;
-        Panel.SetActive(false);
+        Destroy(ClonePanel);
     }
 }

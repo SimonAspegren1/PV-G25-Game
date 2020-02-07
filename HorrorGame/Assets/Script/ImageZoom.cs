@@ -11,12 +11,7 @@ public class ImageZoom : ScrollRect
     bool isPinching = false;
     Vector2 startPinchCenterPos, startPinchScreenPos;
     bool blockPan = false;
-    [HideInInspector] public Vector2 StartPos;
 
-    protected override void Start()
-    {
-        StartPos = content.position;
-    }
 
     protected override void  Awake()
     {
@@ -118,5 +113,6 @@ public class ImageZoom : ScrollRect
         yield return new WaitForSeconds(2f);
         this.movementType = MovementType.Clamped;
     }
+
 
 }
