@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 enum FlashLightDir
 {
@@ -39,6 +40,10 @@ public class FieldOfView : MonoBehaviour
     FlashLightDir myFlashDir = FlashLightDir.Right;
     MeshRenderer myMeshRenderer;
     bool Isflashing = false;
+    [SerializeField]Tilemap myTileMap;
+    [SerializeField]Grid myGrid;
+    [SerializeField]GameObject mySpriteMaskOBJ;
+    List<GameObject> mySpriteMasks = new List<GameObject>();
 
     public Vector3 getVectorFromAngle(float anAngle)
     {
@@ -50,7 +55,7 @@ public class FieldOfView : MonoBehaviour
 
 
     private void Start()
-    {
+    {       
         SetAimDirection(Vector2.right);
         myMesh = new Mesh();
         GetComponent<MeshFilter>().mesh = myMesh;
@@ -68,6 +73,64 @@ public class FieldOfView : MonoBehaviour
 
     private void Update()
     {
+        if (myFlashDir == FlashLightDir.Right)
+        {
+            SetAimDirection(Vector2.right);
+        }
+        if (myFlashDir == FlashLightDir.Left)
+        {
+            SetAimDirection(Vector2.left);
+        }
+        if (myFlashDir == FlashLightDir.Up)
+        {
+            SetAimDirection(Vector2.up);
+        }
+        if (myFlashDir == FlashLightDir.Down)
+        {
+            SetAimDirection(Vector2.down);
+        }
+        if (ThePlayer.change.x < 0)
+        {
+            if (IsChangingY && !IsChangingX)
+            {
+                DontChangeAngleForY = true;
+            }
+            SetAimDirection(Vector2.left);
+            myFlashDir = FlashLightDir.Left;
+            IsChangingX = true;
+        }
+        if (ThePlayer.change.x > 0)
+        {
+            if (IsChangingY && !IsChangingX)
+            {
+                DontChangeAngleForY = true;
+            }
+            SetAimDirection(Vector2.right);
+            myFlashDir = FlashLightDir.Right;
+            IsChangingX = true;
+        }
+        if (ThePlayer.change.y > 0 && !DontChangeAngleForY)
+        {
+            IsChangingY = true;
+            SetAimDirection(Vector2.up);
+            myFlashDir = FlashLightDir.Up;
+        }
+        if (ThePlayer.change.y < 0 && !DontChangeAngleForY)
+        {
+            IsChangingY = true;
+            SetAimDirection(Vector2.down);
+            myFlashDir = FlashLightDir.Down;
+        }
+        if (ThePlayer.change.x == 0)
+        {
+            IsChangingX = false;
+            DontChangeAngleForY = false;
+        }
+        if (ThePlayer.change.y == 0)
+        {
+            IsChangingY = false;
+            DontChangeAngleForY = false;
+        }
         if (Input.GetKeyDown(KeyCode.F))
         {
             Isflashing = !Isflashing;
@@ -90,64 +153,7 @@ public class FieldOfView : MonoBehaviour
         fov = Mathf.Clamp(myEnergy, 0, 90);
         Vector3 origin = transform.position;
         int rayCount = 50;
-        if(myFlashDir == FlashLightDir.Right)
-        {
-            SetAimDirection(Vector2.right);
-        }
-        if(myFlashDir == FlashLightDir.Left)
-        {
-            SetAimDirection(Vector2.left);
-        }
-        if(myFlashDir == FlashLightDir.Up)
-        {
-            SetAimDirection(Vector2.up);
-        }
-        if(myFlashDir == FlashLightDir.Down)
-        {
-            SetAimDirection(Vector2.down);
-        }
-        if(ThePlayer.change.x < 0 )
-        {
-            if(IsChangingY && !IsChangingX)
-            {
-                DontChangeAngleForY = true;
-            }
-            SetAimDirection(Vector2.left);
-            myFlashDir = FlashLightDir.Left;
-            IsChangingX = true;
-        }
-        if(ThePlayer.change.x > 0)
-        {
-            if (IsChangingY && !IsChangingX)
-            {
-                DontChangeAngleForY = true;
-            }
-            SetAimDirection(Vector2.right);
-            myFlashDir = FlashLightDir.Right;
-            IsChangingX = true;
-        }
-        if(ThePlayer.change.y > 0 && !DontChangeAngleForY)
-        {
-            IsChangingY = true;
-            SetAimDirection(Vector2.up);
-            myFlashDir = FlashLightDir.Up;
-        }
-        if(ThePlayer.change.y < 0&& !DontChangeAngleForY)
-        {
-            IsChangingY = true;
-            SetAimDirection(Vector2.down);
-            myFlashDir = FlashLightDir.Down;
-        }
-        if(ThePlayer.change.x == 0)
-        {
-            IsChangingX = false;
-            DontChangeAngleForY = false;
-        }
-        if(ThePlayer.change.y == 0)
-        {
-            IsChangingY = false;
-            DontChangeAngleForY = false;
-        }
+
         float angleincrease = fov / rayCount;
         float viewdistance = 20f;
         viewdistance = Mathf.Clamp(myEnergy, 0, 20);
@@ -172,9 +178,23 @@ public class FieldOfView : MonoBehaviour
                 if (raycasthit.collider.gameObject.GetComponent<LightReflect>())
                 {
                     raycasthit.collider.gameObject.GetComponent<LightReflect>().HasLightOnIt = true;
-                    raycasthit.collider.gameObject.GetComponent<SpriteRenderer>().sortingLayerID = myMeshRenderer.sortingLayerID;
+                    raycasthit.collider.gameObject.GetComponent<Renderer>().sortingLayerID = myMeshRenderer.sortingLayerID;
                 }
-                Debug.Log("True" + raycasthit.collider.name + raycasthit.point);
+                if (raycasthit.collider.gameObject.GetComponent<TilemapCollider2D>())
+                {
+                    Vector3Int cordinate = myGrid.WorldToCell(raycasthit.point - raycasthit.normal);
+                    Vector3 WorldCordinate = myGrid.GetCellCenterWorld(cordinate);
+                    if (!SpriteMaskExsistsOnPoint(raycasthit.point - raycasthit.normal))
+                    {
+                        GameObject obj = Instantiate(mySpriteMaskOBJ, WorldCordinate, mySpriteMaskOBJ.transform.rotation);
+                        obj.GetComponent<LightReflect>().DestroyAfterLightIsGone = true;
+                        mySpriteMasks.Add(obj);
+                        Vector2 SpriteSizehWorld = obj.GetComponent<SpriteMask>().sprite.bounds.size;
+                        Vector2 CellSizeWorld = myGrid.cellSize;
+                        Vector2 newScale = CellSizeWorld / SpriteSizehWorld;
+                        obj.transform.localScale = newScale;
+                    }
+                }
             }
             vertices[vertexIndex] = vertex;
             if (i > 0)
@@ -206,4 +226,24 @@ public class FieldOfView : MonoBehaviour
     {
         angle = GetAngleFromDirection(dir) + fov / 2; 
     }
+
+    bool SpriteMaskExsistsOnPoint(Vector2 Point)
+    {
+        for (int i = mySpriteMasks.Count -1; i >= 0 ; i--)
+        {
+            if(mySpriteMasks[i] == null)
+            {
+                mySpriteMasks.RemoveAt(i);
+            }
+        }
+        for (int i = 0; i < mySpriteMasks.Count; i++)
+        {
+            if((Vector2)mySpriteMasks[i].transform.position == Point)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

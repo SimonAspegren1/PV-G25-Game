@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class LightReflect : MonoBehaviour
 {
-    SpriteRenderer mySR;
+    Renderer mySR;
     int SLId;
     public bool HasLightOnIt = false;
+    public bool DestroyAfterLightIsGone = false;
     // Start is called before the first frame update
     void Start()
     {
-        mySR = GetComponent<SpriteRenderer>();
+        mySR = GetComponent<Renderer>();
         SLId = mySR.sortingLayerID;
+        HasLightOnIt = false;
     }
 
     // Update is called once per frame
@@ -20,6 +22,10 @@ public class LightReflect : MonoBehaviour
         if (!HasLightOnIt)
         {
             mySR.sortingLayerID = SLId;
+            if (DestroyAfterLightIsGone)
+            {
+                Destroy(this.gameObject);
+            }
         }
         else
         {

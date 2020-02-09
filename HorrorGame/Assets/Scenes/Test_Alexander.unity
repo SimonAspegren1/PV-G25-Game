@@ -637,7 +637,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 550a5d6229340f44bb1ab033e117f5b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 1662656138}
+  item: {fileID: 767716644}
   n: 0
 --- !u!4 &767716641
 Transform:
@@ -706,8 +706,7 @@ MonoBehaviour:
   Name: Picture
   Description: A picture of a door
   Panel: {fileID: 660244399}
-  Exitbtn: {fileID: 572437597}
-  IZ: {fileID: 1240521569}
+  Canvas: {fileID: 1330847219}
 --- !u!114 &767716645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -978,7 +977,6 @@ MonoBehaviour:
   maxZoom: 20
   zoomLerpSpeed: 10
   currentZoom: 1
-  StartPos: {x: 0, y: 0}
 --- !u!1 &1330847215
 GameObject:
   m_ObjectHideFlags: 0
@@ -1249,18 +1247,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4362189946239084028}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1662656138 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6286938213440368640, guid: d716ab1ccccf3a34192d5992693a0879,
-    type: 3}
-  m_PrefabInstance: {fileID: 4362189946239084028}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1662656137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67f9419d98057e0458c3e78841b7a3d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1662656139
 MonoBehaviour:
   m_ObjectHideFlags: 0
