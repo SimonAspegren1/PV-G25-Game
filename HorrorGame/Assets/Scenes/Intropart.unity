@@ -607,11 +607,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc3d06adc92e40b46a887fc836d1b9c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  viewdistance: 0
   SR: {fileID: 1981918911}
   myLayerMask:
     serializedVersion: 2
     m_Bits: 311
   myEnergy: 1000
+  origin: {x: 0, y: 0, z: 0}
   myTileMap: {fileID: 1144548414}
   myGrid: {fileID: 678515471}
   mySpriteMaskOBJ: {fileID: 1413126413}
