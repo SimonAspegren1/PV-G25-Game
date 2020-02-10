@@ -4,7 +4,26 @@ using UnityEngine;
 
 public class Monster_Ai : MonoBehaviour
 {
-    public Transform myTarget;
-    public float mySpeed = 200f;
-    public float nextWayPointDistance = 3f;
+    private Transform myTarget;
+
+    private Transform avoidTarget;
+
+    public float mySpeed;
+    //public float nextWayPointDistance = 3f;
+
+    private void Start()
+    {
+        myTarget = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+    }
+
+    private void LateUpdate()
+    {
+        transform.position = Vector2.MoveTowards(transform.position, myTarget.position, mySpeed * Time.deltaTime);
+        if (Vector2.Distance(transform.position, avoidTarget.position) < 4)
+        {
+
+        }
+    }
+
+
 }

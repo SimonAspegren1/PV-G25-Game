@@ -37,6 +37,7 @@ public class FieldOfView : MonoBehaviour
     bool DontChangeAngleForY = false;
     public float myEnergy;
     float fov;
+    public RaycastHit2D raycasthit;
     FlashLightDir myFlashDir = FlashLightDir.Right;
     MeshRenderer myMeshRenderer;
     bool Isflashing = false;
@@ -146,7 +147,7 @@ public class FieldOfView : MonoBehaviour
         }
     }
 
-    void FlashThelight()
+    public void FlashThelight()
     {
         transform.position = PlayerT.position;
         fov = 90;
@@ -167,7 +168,7 @@ public class FieldOfView : MonoBehaviour
         for (int i = 0; i <= rayCount; i++)
         {
             Vector3 vertex;
-            RaycastHit2D raycasthit = Physics2D.Raycast(origin, GetVectorFromAngle(angle), viewdistance, myLayerMask);
+            raycasthit = Physics2D.Raycast(origin, GetVectorFromAngle(angle), viewdistance, myLayerMask);
             if (raycasthit.collider == null)
             {
                 vertex = origin + GetVectorFromAngle(angle) * viewdistance;
