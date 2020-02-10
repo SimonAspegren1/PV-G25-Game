@@ -11,13 +11,13 @@ public class InventoryObjects : ScriptableObject
         bool tempHasItem = false;
         for (int i = 0; i < Container.Count; i++)
         {
-            if (Container[i].myItem == _myItem)
-            {
-                Container[i].AddAmount(_myAmount);
+            //if (Container[i].myItem == _myItem)
+            //{
+            //    Container[i].AddAmount(_myAmount);
                 
-                tempHasItem = true;
-                break;
-            }
+            //    tempHasItem = true;
+            //    break;
+            //}
         }
         if (!tempHasItem)
         {
