@@ -12,7 +12,7 @@ public class RemoveItem : MonoBehaviour
 
     public void ReturnId(int ButtonId)
     {
-        if (inventory.Container[ButtonId] != null)
+        if (inventory.Container[ButtonId] != null && inventory.Container.Count > 0)
         {
             Debug.Log("Hej");
             AccessButtonInt = ButtonId;
