@@ -18,7 +18,8 @@ public class FieldOfView : MonoBehaviour
     int myRayCount = 50;
     float myAngle = 0f;
     float myAngleIncrease;
-    float myViewDistance = 8f;
+    //float myViewDistance = 8f;
+    public float viewdistance;
     Vector3 myDirection;
 
     Vector3[] myVertices;
@@ -37,7 +38,10 @@ public class FieldOfView : MonoBehaviour
     bool DontChangeAngleForY = false;
     public float myEnergy;
     float fov;
+
     public RaycastHit2D raycasthit;
+    public Vector3 origin;
+
     FlashLightDir myFlashDir = FlashLightDir.Right;
     MeshRenderer myMeshRenderer;
     bool Isflashing = false;
@@ -152,11 +156,11 @@ public class FieldOfView : MonoBehaviour
         transform.position = PlayerT.position;
         fov = 90;
         fov = Mathf.Clamp(myEnergy, 0, 90);
-        Vector3 origin = transform.position;
+        origin = transform.position;
         int rayCount = 50;
 
         float angleincrease = fov / rayCount;
-        float viewdistance = 20f;
+        viewdistance = 20f;
         viewdistance = Mathf.Clamp(myEnergy, 0, 20);
         Vector3[] vertices = new Vector3[rayCount + 1 + 1];
         Vector2[] uv = new Vector2[vertices.Length];
