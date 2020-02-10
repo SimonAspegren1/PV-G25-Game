@@ -15,12 +15,16 @@ public class DisplayInventory : MonoBehaviour
     GameObject obj;
     public int myButtonId;
     public GameObject myInventoryMenu;
+    [SerializeField] Button DiscardButton;
 
     Dictionary<InventoryObjects.InventorySlot, GameObject> itemsDisplayed = new Dictionary<InventoryObjects.InventorySlot, GameObject>();
     List<GameObject> myObjects = new List<GameObject>();
     void Start()
     {
-
+        if (DiscardButton)
+        {
+            DiscardButton.onClick.AddListener(DiscardItem);
+        }
         CreateDisplay();
         myInventoryMenu.SetActive(false);
        
@@ -31,6 +35,16 @@ public class DisplayInventory : MonoBehaviour
         if(inventory.Container.Count != 0)
         {
             UpdateDisplay();
+        }
+        if (!myInventoryMenu.activeSelf)
+        {
+            for (int i = 0; i < inventory.Container.Count; i++)
+            {
+                if (itemsDisplayed.ContainsKey(inventory.Container[i]))
+                {
+                    itemsDisplayed[inventory.Container[i]].gameObject.SetActive(false);
+                }
+            }
         }
        
     }
@@ -151,6 +165,23 @@ public class DisplayInventory : MonoBehaviour
             inventory.Container[RemoveItem.AccessButtonInt].myAmount -= 1;
             Debug.Log("True");
             myInventoryMenu.SetActive(false);
+            if(inventory.Container[RemoveItem.AccessButtonInt].myItem is Note || inventory.Container[RemoveItem.AccessButtonInt].myItem is Picture)
+            {
+                inventory.Container[RemoveItem.AccessButtonInt].myAmount += 1;
+                if (DiscardButton)
+                {
+                    DiscardButton.gameObject.SetActive(true);
+                }
+            }
+        }
+    }
+
+    void DiscardItem()
+    {
+        if(inventory.Container.Count != 0)
+        {
+            inventory.Container[RemoveItem.AccessButtonInt].myAmount -= 1;
+            DiscardButton.gameObject.SetActive(false);
         }
     }
 
