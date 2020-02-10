@@ -13,13 +13,17 @@ public class DisplayInventory : MonoBehaviour
     public int myXstart;
     public int myYStart;
     GameObject obj;
-
+    public int myButtonId;
+    public GameObject myInventoryMenu;
 
     Dictionary<InventoryObjects.InventorySlot, GameObject> itemsDisplayed = new Dictionary<InventoryObjects.InventorySlot, GameObject>();
     List<GameObject> myObjects = new List<GameObject>();
     void Start()
     {
+
         CreateDisplay();
+
+
     }
     private void Update()
     {
@@ -27,6 +31,7 @@ public class DisplayInventory : MonoBehaviour
     }
     public void UpdateDisplay()
     {
+        HideDisplay();
         for (int i = 0; i < inventory.Container.Count; i++)
         {
             if (itemsDisplayed.ContainsKey(inventory.Container[i]))
@@ -39,10 +44,9 @@ public class DisplayInventory : MonoBehaviour
                 myObjects.Add(obj);
                 if (obj.GetComponent<Button>())
                 {
-
                     obj.GetComponent<Button>().onClick.AddListener(UseTheItem);
                 }
-                
+
 
 
                 obj.GetComponent<RectTransform>().localPosition = GetPostion(i);
@@ -65,6 +69,14 @@ public class DisplayInventory : MonoBehaviour
                 Destroy( itemsDisplayed[inventory.Container[i]].gameObject);
                 itemsDisplayed.Remove(inventory.Container[i]);
                 inventory.Container.RemoveAt(i);
+
+                for (int a = 0; a < inventory.Container.Count; a++)
+                {
+                    Destroy(itemsDisplayed[inventory.Container[a]].gameObject);
+                    itemsDisplayed.Remove(inventory.Container[a]);
+                }
+                UpdateDisplay();
+
             }
         }
     }
@@ -79,24 +91,25 @@ public class DisplayInventory : MonoBehaviour
             
         }
     }
+    public void HideDisplay()
+    {
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            myInventoryMenu.SetActive(!myInventoryMenu.activeSelf);
+           
+        }
+    }
     public Vector3 GetPostion(int i)
     {
         return new Vector3(myXstart + (myXSpaceBetweenItem * (i % myNumberOfColumns)), myYStart + (-myYSpaceBetweenItem* (i/myNumberOfColumns)), 0f);
     }
 
-
+    //public static InventoryObjects inventory2;
     public void UseTheItem()
     {
+        inventory.Container[RemoveItem.AccessButtonInt].myItem.UseItem();
+        inventory.Container[RemoveItem.AccessButtonInt].myAmount -= 1;
         Debug.Log("True");
-        
-        for (int i = 0; i < inventory.Container.Count; i++)
-        {
-            
-            inventory.Container[i].myItem.UseItem();
-            inventory.Container[i].myAmount -= 1;
-        }
-        
-
     }
 
     //void DestroyTheItemDisplay()
