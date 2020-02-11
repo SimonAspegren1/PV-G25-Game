@@ -13,6 +13,7 @@ public class DisplayInventory : MonoBehaviour
     public int myXstart;
     public int myYStart;
     public static bool myCanPickUp = true;
+    public int myCoolDown;
     GameObject obj;
     public int myButtonId;
     public GameObject myInventoryMenu;
@@ -30,11 +31,12 @@ public class DisplayInventory : MonoBehaviour
         CreateDisplay();
         myInventoryMenu.SetActive(false);
         DontDestroyOnLoad(gameObject);
-       
+
 
     }
     private void Update()
     {
+        myCoolDown++;
         if(inventory.Container.Count != 0)
         {
             UpdateDisplay();
@@ -134,15 +136,18 @@ public class DisplayInventory : MonoBehaviour
         
         if (inventory.Container.Count > 0)
         {
-          if(AccessCanPickUp == true)
-          {
+          if(AccessCanPickUp == true )
+          {                
                 if (Input.GetKeyDown(KeyCode.I))
                 {
                     myInventoryMenu.SetActive(!myInventoryMenu.activeSelf);
                     for (int i = 0; i < inventory.Container.Count; i++)
                     {
-
-                        itemsDisplayed[inventory.Container[i]].gameObject.SetActive(!itemsDisplayed[inventory.Container[i]].gameObject.activeSelf);
+                        if (itemsDisplayed.ContainsKey(inventory.Container[i]))
+                        {
+                            itemsDisplayed[inventory.Container[i]].gameObject.SetActive(!itemsDisplayed[inventory.Container[i]].gameObject.activeSelf);
+                        }
+                       
                     }
 
                 }

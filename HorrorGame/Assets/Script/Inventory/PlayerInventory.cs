@@ -7,7 +7,10 @@ public class PlayerInventory : MonoBehaviour
     public InventoryObjects inventory;
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        
         DisplayInventory.AccessCanPickUp = false;
+        Debug.Log("Yes42342");
+
         var item = collision.GetComponent<InventoryItems>();
         if (item && inventory.Container.Count <= 12)
         {
