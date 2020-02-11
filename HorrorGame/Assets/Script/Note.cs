@@ -16,6 +16,7 @@ public class Note : ItemClass
         ItemName = Name;
         ItemDescription = Description;
         ExitButton.onClick.AddListener(ExitNote);
+        DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame
