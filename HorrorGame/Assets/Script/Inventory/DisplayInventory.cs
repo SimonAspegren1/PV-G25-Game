@@ -29,6 +29,7 @@ public class DisplayInventory : MonoBehaviour
         }
         CreateDisplay();
         myInventoryMenu.SetActive(false);
+        DontDestroyOnLoad(gameObject);
        
 
     }
