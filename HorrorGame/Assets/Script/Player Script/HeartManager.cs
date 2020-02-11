@@ -49,6 +49,10 @@ public class HeartManager : MonoBehaviour
         {
             hearts[0].sprite = Health5;
         }
+        else if (playerCurrentHealth.RuntimeValue == 1)
+        {
+            hearts[0].sprite = Health5;
+        }
         else
         {
             hearts[0].sprite = NoHealth;
