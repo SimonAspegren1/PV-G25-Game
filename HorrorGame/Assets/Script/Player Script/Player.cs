@@ -55,6 +55,7 @@ public class Player : MonoBehaviour
         //myFlashLight.setOrgin(transform.position);
 
         //Is The Player In An Interaction
+        GodMode();
         if (currentState == PlayerState.interact)
         {
             return;
@@ -84,6 +85,14 @@ public class Player : MonoBehaviour
         if (currentState != PlayerState.interact)
         {
             currentState = PlayerState.walk;
+        }
+    }
+    public void GodMode()
+    {
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            currentHealth.RuntimeValue = 100000000;
+
         }
     }
 
