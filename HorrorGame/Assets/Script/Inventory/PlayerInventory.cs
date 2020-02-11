@@ -7,6 +7,7 @@ public class PlayerInventory : MonoBehaviour
     public InventoryObjects inventory;
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        DisplayInventory.AccessCanPickUp = false;
         var item = collision.GetComponent<InventoryItems>();
         if (item && inventory.Container.Count <= 12)
         {
@@ -14,6 +15,7 @@ public class PlayerInventory : MonoBehaviour
            
             Destroy(collision.gameObject);
         }
+        DisplayInventory.AccessCanPickUp = true;
     }
     private void OnApplicationQuit()
     {

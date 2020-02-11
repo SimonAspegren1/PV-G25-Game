@@ -12,6 +12,7 @@ public class DisplayInventory : MonoBehaviour
     public int myNumberOfColumns;
     public int myXstart;
     public int myYStart;
+    public static bool myCanPickUp = true;
     GameObject obj;
     public int myButtonId;
     public GameObject myInventoryMenu;
@@ -19,6 +20,7 @@ public class DisplayInventory : MonoBehaviour
 
     Dictionary<InventoryObjects.InventorySlot, GameObject> itemsDisplayed = new Dictionary<InventoryObjects.InventorySlot, GameObject>();
     List<GameObject> myObjects = new List<GameObject>();
+    public static bool AccessCanPickUp { get => myCanPickUp; set => myCanPickUp = value; }
     void Start()
     {
         if (DiscardButton)
@@ -131,15 +133,19 @@ public class DisplayInventory : MonoBehaviour
         
         if (inventory.Container.Count > 0)
         {
-            if (Input.GetKeyDown(KeyCode.I))
-            {
-                myInventoryMenu.SetActive(!myInventoryMenu.activeSelf);
-                for (int i = 0; i < inventory.Container.Count; i++)
-                {                    
-                    itemsDisplayed[inventory.Container[i]].gameObject.SetActive(!itemsDisplayed[inventory.Container[i]].gameObject.activeSelf);
+          if(AccessCanPickUp == true)
+          {
+                if (Input.GetKeyDown(KeyCode.I))
+                {
+                    myInventoryMenu.SetActive(!myInventoryMenu.activeSelf);
+                    for (int i = 0; i < inventory.Container.Count; i++)
+                    {
+
+                        itemsDisplayed[inventory.Container[i]].gameObject.SetActive(!itemsDisplayed[inventory.Container[i]].gameObject.activeSelf);
+                    }
+
                 }
-             
-            }
+          }            
         }
         else
         {
