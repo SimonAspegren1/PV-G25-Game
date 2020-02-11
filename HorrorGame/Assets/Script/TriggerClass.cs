@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class TriggerClass : MonoBehaviour
 {
     public bool TriggerComplete = false;
-    protected Collider2D myCollider;
+    public Collider2D myCollider;
     public int TriggerId;
     // Start is called before the first frame update
     void Start()
@@ -32,7 +32,8 @@ public abstract class TriggerClass : MonoBehaviour
 
     protected bool RightTrigger(Collider2D collision)
     {
-        if (collision.GetComponent<TriggerClass>())
+        Debug.Log(myCollider);
+        if (collision.GetComponent<TriggerClass>() && myCollider)
         {
             if (collision.GetComponent<TriggerClass>().TriggerId == myCollider.GetComponent<TriggerClass>().TriggerId)
             {

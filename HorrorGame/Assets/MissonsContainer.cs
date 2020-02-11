@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MissonsContainer : MonoBehaviour
+[CreateAssetMenu(fileName = "New MissionContainer", menuName = "MissonContainer")]
+public class MissonsContainer : ScriptableObject
 {
+    public List<MissonObjective> missons = new List<MissonObjective>();
+    public int myMissionIndex;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,4 +18,5 @@ public class MissonsContainer : MonoBehaviour
     {
         
     }
+
 }

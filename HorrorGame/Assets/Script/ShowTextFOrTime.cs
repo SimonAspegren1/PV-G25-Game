@@ -14,8 +14,9 @@ public class ShowTextFOrTime : TriggerClass
     // Start is called before the first frame update
     void Start()
     {
-        SetCollider();
+        //SetCollider();
     }
+
 
     // Update is called once per frame
     void Update()
@@ -77,7 +78,6 @@ public class ShowTextFOrTime : TriggerClass
     }
     public override void myOnTriggerCheck(Collider2D collision)
     {
-        Debug.Log(gameObject.name);
         if (RightTrigger(collision))
         {
             WriteText = true;
