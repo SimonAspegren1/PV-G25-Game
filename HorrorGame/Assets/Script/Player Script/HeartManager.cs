@@ -29,23 +29,23 @@ public class HeartManager : MonoBehaviour
     }
     public void UpdateHearts()
     {
-        if (heartContainers.initialValue == 6)
+        if (playerCurrentHealth.RuntimeValue == 6)
         {
             hearts[0].sprite = FullHealth;
         }
-        else if (heartContainers.initialValue == 5)
+        else if (playerCurrentHealth.RuntimeValue == 5)
         {
             hearts[0].sprite = Health2;
         }
-        else if (heartContainers.initialValue == 4)
+        else if (playerCurrentHealth.RuntimeValue == 4)
         {
             hearts[0].sprite = Health3;
         }
-        else if (heartContainers.initialValue == 3)
+        else if (playerCurrentHealth.RuntimeValue == 3)
         {
             hearts[0].sprite = Health4;
         }
-        else if (heartContainers.initialValue == 2)
+        else if (playerCurrentHealth.RuntimeValue == 2)
         {
             hearts[0].sprite = Health5;
         }
