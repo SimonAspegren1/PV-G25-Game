@@ -42,10 +42,10 @@ public class Player : MonoBehaviour
         // Retrieve the name of this scene.
         string tempsceneName = myCurrentScene.name;
 
-        if (tempsceneName == "New Game")
-        {
+        //if (tempsceneName == "New Game")
+        //{
             transform.position = startingPos.initialValue;
-        }
+        //}
         
     }
 

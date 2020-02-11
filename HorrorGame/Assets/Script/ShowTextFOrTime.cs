@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ShowTextFOrTime : MonoBehaviour
+public class ShowTextFOrTime : TriggerClass
 {
     bool WriteText = false;
     bool CanWriteText = true;
@@ -14,44 +14,18 @@ public class ShowTextFOrTime : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        SetCollider();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (CanWriteText)
-        {
-            if (WriteText)
-            {
-                myTextObj.SetActive(true);
-                if (FadeIn)
-                {
-                    StartCoroutine(FadeTextToFullAlpha(1, myTextObj.GetComponent<Text>()));
-                    FadeIn = false;
-                }
-                CurrentTime += Time.deltaTime;
-                if(CurrentTime >= TimeToShowText)
-                {
-                    WriteText = false;
-                    CanWriteText = false;
-                    CurrentTime = 0;
-                    StartCoroutine(FadeTextToZeroAlpha(1, myTextObj.GetComponent<Text>()));
-                }
-            }
-        }
-        if(myTextObj.GetComponent<Text>().color.a <= 0)
-        {
-            myTextObj.SetActive(false);
-        }
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && CanWriteText)
-        {
-            WriteText = true;
-        }
+
     }
 
     IEnumerator FadeTextToFullAlpha(float t, Text i)
@@ -70,6 +44,43 @@ public class ShowTextFOrTime : MonoBehaviour
         {
             i.color = new Color(i.color.r, i.color.g, i.color.b, i.color.a - (Time.deltaTime / t));
             yield return null;
+        }
+    }
+
+    public override void myUpdate()
+    {
+        if (CanWriteText)
+        {
+            if (WriteText)
+            {
+                myTextObj.SetActive(true);
+                if (FadeIn)
+                {
+                    StartCoroutine(FadeTextToFullAlpha(1, myTextObj.GetComponent<Text>()));
+                    FadeIn = false;
+                }
+                CurrentTime += Time.deltaTime;
+                if (CurrentTime >= TimeToShowText)
+                {
+                    WriteText = false;
+                    CanWriteText = false;
+                    CurrentTime = 0;
+                    StartCoroutine(FadeTextToZeroAlpha(1, myTextObj.GetComponent<Text>()));
+                }
+            }
+        }
+        if (myTextObj.GetComponent<Text>().color.a <= 0)
+        {
+            myTextObj.SetActive(false);
+            TriggerComplete = true;
+        }
+    }
+    public override void myOnTriggerCheck(Collider2D collision)
+    {
+        Debug.Log(gameObject.name);
+        if (RightTrigger(collision))
+        {
+            WriteText = true;
         }
     }
 }
