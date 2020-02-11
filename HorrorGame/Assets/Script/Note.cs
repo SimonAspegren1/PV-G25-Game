@@ -37,7 +37,13 @@ public class Note : ItemClass
     {
         ScrollArea.SetActive(false);
         ExitButton.gameObject.SetActive(false);
+        if (GameObject.Find("DiscardButton"))
+        {
+            GameObject.Find("DiscardButton").SetActive(false);
+        }
     }
+
+
 }
 
 
