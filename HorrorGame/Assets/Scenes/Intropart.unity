@@ -1940,6 +1940,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FlashLight
       objectReference: {fileID: 0}
+    - target: {fileID: 6115805428461359117, guid: a6d024f577c15a64bb037b8d74e6996a,
+        type: 3}
+      propertyPath: m_TagString
+      value: FlashLight
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6d024f577c15a64bb037b8d74e6996a, type: 3}
 --- !u!1 &197883954
