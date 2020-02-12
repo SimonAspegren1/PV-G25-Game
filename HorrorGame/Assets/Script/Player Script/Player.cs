@@ -151,8 +151,16 @@ public class Player : MonoBehaviour
         else
         {
             this.gameObject.SetActive(false);
+
+            StartCoroutine(Timer());
+            SceneManager.LoadScene("GameOver");
         }
         
+    }
+
+    IEnumerator Timer()
+    {
+        yield return new WaitForSeconds(2);
     }
 
     private IEnumerator KnockCo(float knockTime)
