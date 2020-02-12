@@ -45,18 +45,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.2303567}
+  m_Offset: {x: -0.0023559928, y: 0.12176418}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.2327194, y: 1.0124512}
+  m_Size: {x: 0.6791867, y: 0.61278725}
   m_EdgeRadius: 0
 --- !u!114 &5288637845204365773
 MonoBehaviour:
@@ -70,9 +70,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40ca19a6de47835488cd6c51aa68b16a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: NewGame
-  playerPos: {x: 0, y: 0}
-  playerStorage: {fileID: 0}
-  fadeInPanel: {fileID: 0}
-  fadeOutPanel: {fileID: 0}
+  sceneToLoad: HouseInterior
+  playerPos: {x: 0, y: -2.5}
+  playerStorage: {fileID: 11400000, guid: f246c4fdaa4c047418b4cd903268eae1, type: 2}
+  fadeInPanel: {fileID: 2013302805676604178, guid: 245a99565b8de7849a1b60d963c13bf1,
+    type: 3}
+  fadeOutPanel: {fileID: 6558184670283969246, guid: 13a20f18c92c50b41af48b683af625c8,
+    type: 3}
   fadeWait: 0.33
