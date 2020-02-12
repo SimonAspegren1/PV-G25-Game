@@ -6,11 +6,11 @@ public class Battery : ItemClass
 {
     [SerializeField] string Name, Description;
     [SerializeField] int AmountToIncrease;
-    FieldOfView TheFlashLIght;
+    rotate TheFlashLIght;
     // Start is called before the first frame update
     void Start()
     {
-        TheFlashLIght = GameObject.FindGameObjectWithTag("FlashLight").GetComponent<FieldOfView>();
+        TheFlashLIght = GameObject.FindGameObjectWithTag("FlashLight").GetComponent<rotate>();
     }
 
     // Update is called once per frame
@@ -21,6 +21,6 @@ public class Battery : ItemClass
 
     public override void UseItem()
     {
-        TheFlashLIght.myEnergy += AmountToIncrease;
+        TheFlashLIght.battery += AmountToIncrease;
     }
 }
